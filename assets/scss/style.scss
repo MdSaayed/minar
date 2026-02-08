@@ -1,0 +1,22 @@
+@use 'utils/variables' as *;
+@use 'utils/container';
+@use 'components/index';
+@use 'base/fonts';
+@use 'base/reset';
+
+// Layouts--------------
+/** 1. Hero **/
+@use 'layouts/hero';
+@use 'layouts/awareness';
+@use 'layouts/product';
+@use './layouts/why-choose-us';
+@use './layouts/testimonials';
+@use './layouts/footer';
+
+@use './layouts/breadcrumbs';
+@use './layouts/_mission';
+@use './layouts/experience'; 
+@use './layouts/faq';
+
+
+ 

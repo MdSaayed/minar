@@ -1,0 +1,31 @@
+@use '../utils/variables' as *;
+
+.btn {
+  display: inline-block;
+  line-height: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  padding: 8px 24px;
+  cursor: pointer;
+  border-radius: 100px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  text-align: center;
+
+  &--primary {
+    background: $primary-color;
+    color: $white-color;
+  }
+
+  &--secondary {
+    background: transparent;
+    color: $black-color;
+    border: 1px solid $primary-color;
+
+    &:hover {
+      background: $primary-color;
+      color: $white-color;
+    }
+  }
+}

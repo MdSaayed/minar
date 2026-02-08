@@ -1,0 +1,36 @@
+@use '../utils/variables' as *;
+
+.subtitle {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.4;
+    display: inline-block;
+    padding: 7px 20px;
+    color: $black-color;
+    border: 1px solid $vivid-orange;
+    border-radius: 100px;
+    margin-bottom: 1rem;
+    white-space: nowrap;
+}
+
+.subtitle--two {
+    @extend .subtitle;
+    background: $light-orange-color;
+}
+
+.subtitle-text {
+    font-size: 2.25rem;
+    line-height: 1.2;
+    font-weight: 500;
+    margin-bottom: 3.8rem;
+    max-width: 585px;
+
+    @media (max-width: 1021px) {
+        margin-bottom: 1.8rem;
+        font-size: 2rem;
+    }
+
+    @media (max-width: 576px) {
+        font-size: 1.5rem;
+    }
+}

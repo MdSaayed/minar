@@ -1,0 +1,101 @@
+@use '../utils/variables' as *;
+
+
+
+.faq {
+    background: $light-orange-color;
+    background-image: radial-gradient(circle at 4px 4px, #fdcc61 1.5px, transparent 0);
+    background-size: 30px 30px;
+
+    &__title {
+        text-align: center;
+    }
+
+    &__area {
+        margin-top: 2.2rem;
+        max-width: 890px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    &__item {
+        margin-bottom: 12px;
+        border-radius: 16px;
+        overflow: hidden;
+        transition: background-color 0.3s ease;
+        border-bottom: 1px solid $primary-color;
+        background: $light-orange-color;
+        padding: 30px;
+
+        &--active {
+            background-color: $primary-color;
+            border-color: $primary-color;
+        }
+    }
+
+    &__header {
+        width: 100%;
+        background: none;
+        border: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        text-align: left;
+        font-size: 22px;
+        line-height: 1.4;
+        font-weight: 500;
+        color: var(--text-dark);
+        outline: none;
+    }
+
+    &__item--active .faq__header {
+        color: white;
+    }
+
+    &__content {
+        max-height: 0;
+        overflow: hidden;
+        transition: padding 0.4s ease-in-out, max-height 0.4s ease-in-out;
+    }
+
+    &__item--active .faq__content {
+        padding-top: 14px;
+    }
+
+    &__text {
+        color: $white-color;
+        margin: 0;
+        line-height: 1.4;
+        font-size: 20px;
+    }
+
+    &__item--active .faq__text {
+        color: $white-color;
+    }
+
+    &__icon {
+        font-size: 1.5rem;
+        transition: transform 0.3s ease;
+        position: relative;
+        width: 20px;
+        height: 20px;
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-right: 2px solid currentColor;
+            border-bottom: 2px solid currentColor;
+            transform: translateY(-50%) rotate(45deg);
+            top: 40%;
+            transition: transform 0.3s ease;
+        }
+    }
+
+    &__item--active .faq__icon::after {
+        transform: translateY(0%) rotate(-135deg);
+    }
+}

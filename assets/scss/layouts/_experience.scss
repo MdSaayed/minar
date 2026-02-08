@@ -1,0 +1,201 @@
+@use '../utils/variables' as *;
+
+.experience {
+    background: $black-color;
+    background-image: radial-gradient(circle at 4px 4px, #333 1.5px, transparent 0);
+    background-size: 30px 30px;
+
+    &__title {
+        color: $white-color;
+        text-align: center;
+
+        span {
+            font-style: italic;
+        }
+    }
+
+    &__subtitle-wrap {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(7, 1fr);
+        grid-column-gap: 15px;
+        grid-row-gap: 15px;
+        margin-top: 2rem;
+
+        @media (max-width:1150px) {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(20, 1fr);
+        }
+    }
+
+    &__card {
+        border-radius: 10px;
+        overflow: hidden;
+        padding: 2.2rem 2rem;
+
+        @media (max-width:1200px) {
+            padding: 1rem 1.5rem;
+        }
+
+        @media (max-width:576px) {
+            padding: 1rem;
+        }
+    }
+
+    &__card-heading,
+    &__gsm-unit {
+        font-size: 1.5rem;
+        line-height: 1;
+        font-weight: 500;
+        color: $black-color;
+        margin-bottom: 10px;
+
+        @media(max-width:600px) {
+            font-size: 20px;
+        }
+    }
+
+    &__gsm-value {
+        font-size: 3.8rem;
+        font-weight: 700;
+        line-height: 1;
+        display: block;
+        text-align: center;
+        background: linear-gradient(to bottom, #FF6600, #FF3300);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin-bottom: 4px;
+
+        @media (max-width:576px){
+            font-size: 2.5rem;
+        }
+    }
+
+    &__gsm-unit {
+        text-align: center;
+    }
+
+    &__card-image-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        max-width: 180px;
+        width: 100%;
+        height: 100%;
+
+        img {
+
+            object-fit: cover;
+        }
+    }
+
+    &__card-desc {
+        font-size: 14px;
+        color: #7F7F7F;
+        line-height: 20px;
+
+        @media(max-width:600px) {
+            line-height: 1;
+        }
+
+        &--center {
+            text-align: center;
+        }
+
+        &--max-w {
+            max-width: 270px;
+        }
+    }
+
+    &__card-content--3 {
+        margin-top: 1rem;
+    }
+
+    &__card--1 {
+        grid-area: 1 / 1 / 8 / 4;
+        background: url('../images/experience-bg-1.png') center/cover no-repeat;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+
+        @media (max-width:1150px) {
+            grid-area: 1 / 1 / 11 / 2;
+        }
+    }
+
+    &__card--2 {
+        grid-area: 1 / 4 / 4 / 7;
+        background: url('../images/experience-bg-2.png') center/cover no-repeat;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        @media (max-width:1150px) {
+            grid-area: 1 / 2 / 6 / 3;
+        }
+    }
+
+    &__card--3 {
+        grid-area: 1 / 7 / 4 / 13;
+        background: url('../images/experience-bg-3.png') center/cover no-repeat;
+        display: flex;
+        gap: 20px;
+
+        @media (max-width:1150px) {
+            grid-area: 11 / 1 / 15 / 3;
+        }
+
+        @media (max-width:470px) {
+            flex-direction: column;
+            align-items: center;
+
+            .experience__card-desc--max-w,
+            .experience__card-heading {
+                max-width: 100%;
+                text-align: center;
+            }
+        }
+    }
+
+    &__card--4 {
+        grid-area: 4 / 4 / 8 / 9;
+        background: url('../images/experience-bg-4.png') bottom/cover no-repeat;
+
+        @media (max-width:1150px) {
+            grid-area: 15 / 1 / 21 / 3;
+        }
+    }
+
+    &__card--5 {
+        grid-area: 4 / 9 / 8 / 13;
+        background: url('../images/experience-bg-5.png') bottom/cover no-repeat;
+
+        @media (max-width:1150px) {
+            grid-area: 6 / 2 / 11 / 3;
+        }
+
+        .experience__card-content {
+            text-align: center;
+        }
+
+        .experience__card-image-wrap {
+            text-align: center;
+        }
+
+        img {
+            max-width: 150px;
+            max-height: 160px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            margin: 0 auto;
+        }
+    }
+}

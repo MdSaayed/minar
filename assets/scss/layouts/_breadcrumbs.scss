@@ -1,0 +1,97 @@
+@use '../utils/variables' as *;
+
+.breadcrumbs {
+    background: url('../images/breadcrumbs-bg.png') center/cover no-repeat, $black-color;
+    min-height: 535px;
+
+    &--mission-page {
+        .breadcrumbs__container {
+            padding-bottom: 0;
+        }
+    }
+
+    @media (max-width: 1150px) {
+        min-height: 390px;
+    }
+
+    @media (max-width: 768px) {
+        min-height: fit-content;
+    }
+
+    &__subtitle-wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+        padding-top: 4.5rem;
+        background: transparent;
+
+
+        @media (max-width:576px) {
+            gap: 0.8rem;
+
+            .breadcrumbs__shape {
+                display: none;
+            }
+        }
+
+        @media (max-width:350px) {
+            flex-wrap: wrap;
+        }
+    }
+
+    &__subtitle {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0;
+    }
+
+    &__current-item {
+        color: $white-color;
+        font-size: 1rem;
+        line-height: 1.2;
+        font-weight: 500;
+        letter-spacing: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex-shrink: 0;
+    }
+
+    &__header--mission-page {
+        display: none;
+
+        @media (max-width:576px) {
+            display: block;
+        }
+    }
+
+    &__title {
+        color: $white-color;
+        margin-top: 4rem;
+        margin-bottom: 1.5rem;
+
+        @media (max-width: 1021px) {
+            margin-top: 3rem;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+        }
+
+        @media (max-width: 576px) {
+            margin-top: 2rem;
+            font-size: 2rem;
+        }
+    }
+
+    &__desc {
+        color: $white-color;
+        text-align: center;
+    }
+
+    &--product-details-page {
+        @media(max-width:768px) {
+            min-height: 400px;
+        }
+    }
+}

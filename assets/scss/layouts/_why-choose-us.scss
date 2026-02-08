@@ -1,0 +1,73 @@
+@use '../utils/variables' as *;
+
+.why-choose-us {
+    position: relative;
+    background: url('../images/why-choose-us-bg.png') bottom/cover no-repeat;
+
+    &::after {
+        content: "";
+        position: absolute;
+        width: 300px;
+        height: 490px;
+        top: -130px;
+        left: -4px;
+        background: $primary-color;
+        transform: rotate(-112.6deg);
+        border-radius: 50%;
+        filter: blur(200px);
+        z-index: 1;
+
+        @media (max-width:576px) {
+            width: 165px;
+            height: 270px;
+            transform: rotate(-140deg);
+            top: -35px;
+            left: -76px;
+            filter: blur(80px);
+        }
+    }
+
+    &__container {
+        position: relative;
+        z-index: 10;
+    }
+
+    &__subtitle-wrap {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__title {
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    &__subtitle-text {
+        max-width: 1090px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        margin-bottom: 1.8rem;
+    }
+
+    &__desc {
+        text-align: center;
+        font-size: 22px;
+        line-height: 1.1;
+        letter-spacing: 0;
+        max-width: 1085px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1.5rem;
+    }
+
+
+    &__btn-wrap {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__btn {
+        padding: 12px 56px;
+    }
+}
