@@ -282,57 +282,18 @@ if (document.querySelector(".product--details")) {
 
 
 
-// ================testimonials==========================
-document.addEventListener('DOMContentLoaded', () => {
-    // ১. আপনার কন্টেন্ট ডাটা
-    const data = [
-        { name: "John Smith", text: "Text for the first avatar. Great experience!" },
-        { name: "Sarah Khan", text: "This break was exactly what I needed to recharge." },
-        { name: "Lieke Visser", text: "My screen-time report was bullying me. I bought this hoping it would stop my 11 PM doomscrolling — and somehow it worked." },
-        { name: "Ahmed Raza", text: "The quality and focus I gained are amazing for my work." },
-        { name: "Elena Doe", text: "I traded hours of scrolling for hours of creating every day!" }
-    ];
+// ================Vanish SUbmit Btn==========================
+if (document.querySelector(".vanish__input")) {
+    const input = document.querySelector(".vanish__input");
+    const submitBtn = document.querySelector(".vanish__button");
 
-    const allAvatars = document.querySelectorAll('.avatar');
-    const allDots = document.querySelectorAll('.dot');
-    const textEl = document.getElementById('testimonial-text');
-    const authorEl = document.getElementById('testimonial-author');
-
-    // ২. কমন ফাংশন যা সবকিছু আপডেট করবে
-    function updateActiveSlide(index) {
-        console.log("Updating to slide:", index); // ডিবাগিং এর জন্য
-
-        // সব ইমেজ এবং ডট থেকে active ক্লাস রিমুভ করা
-        allAvatars.forEach(av => av.classList.remove('active'));
-        allDots.forEach(dot => dot.classList.remove('active'));
-
-        // ক্লিক করা ইনডেক্স অনুযায়ী active ক্লাস অ্যাড করা
-        allAvatars[index].classList.add('active');
-        allDots[index].classList.add('active');
-
-        // কন্টেন্ট আপডেট (Fade Effect সহ)
-        if (textEl && authorEl) {
-            textEl.parentElement.style.opacity = '0';
-            setTimeout(() => {
-                textEl.textContent = data[index].text;
-                authorEl.textContent = data[index].name;
-                textEl.parentElement.style.opacity = '1';
-                textEl.parentElement.style.transition = 'opacity 0.4s';
-            }, 200);
+    input.addEventListener("input", function () {
+        if (input.value.trim() === "") {
+            submitBtn.setAttribute("disabled", "true");
+            submitBtn.classList.add("disabled");
+        } else {
+            submitBtn.removeAttribute("disabled");
+            submitBtn.classList.remove("disabled");
         }
-    }
-
-    // ৩. প্যাগিনেশন ডটে ক্লিক লজিক
-    allDots.forEach((dot, i) => {
-        dot.addEventListener('click', () => {
-            updateActiveSlide(i);
-        });
     });
-
-    // ৪. ইমেজে ক্লিক লজিক (ইমেজে ক্লিক করলেও যেন ডট চেঞ্জ হয়)
-    allAvatars.forEach((avatar, i) => {
-        avatar.addEventListener('click', () => {
-            updateActiveSlide(i);
-        });
-    });
-});
+}

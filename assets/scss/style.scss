@@ -5,7 +5,7 @@
 @use 'base/reset';
 
 // Layouts--------------
-/** 1. Hero **/
+@use './layouts/header';
 @use 'layouts/hero';
 @use 'layouts/awareness';
 @use 'layouts/product';
@@ -15,8 +15,6 @@
 
 @use './layouts/breadcrumbs';
 @use './layouts/_mission';
-@use './layouts/experience'; 
+@use './layouts/experience';
 @use './layouts/faq';
-
-
- 
+@use './layouts/vanish';

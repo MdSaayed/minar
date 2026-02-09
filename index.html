@@ -12,6 +12,69 @@
 
 <body>
 
+  <!-- Starting of the Header One Area Here -->
+  <header class="header header--style-1">
+    <div class="header__container container">
+      <nav class="nav">
+        <div class="nav__logo">
+          <a href="/" class="nav__link">
+            <img src="./assets/images/logo-black.png" alt="Logo" class="nav__logo-img">
+          </a>
+        </div>
+
+        <ul class="nav__menu">
+          <li class="nav__item current-menu-itemn"> <a href="#" class="nav__link">Home</a> </li>
+          <li class="nav__item current-menu-itemn"> <a href="./our-mission.html" class="nav__link">Our Mission</a>
+          </li>
+          <li class="nav__item current-menu-itemn"> <a href="./product.html" class="nav__link">Products</a> </li>
+          <li class="nav__item current-menu-itemn"> <a href="./blog.html" class="nav__link">Blog</a> </li>
+          <li class="nav__item current-menu-itemn"> <a href="./vanish.html" class="nav__link">Vanish</a> </li>
+          <li class="nav__item current-menu-itemn"> <a href="./contact.html" class="nav__link">Contact Us</a> </li>
+        </ul>
+
+        <div class="nav__btn-wrap">
+          <div class="nav__lang">
+            <select class="nav__language" name="lang" id="language">Eng
+              <option value="eng">Eng</option>
+              <option value="Ban">Ban</option>
+            </select>
+          </div>
+
+          <div class="nav__user-profile">
+            <a href="/" class="nav__user-profile-link">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M11 11C9.99163 11 9.12843 10.641 8.41038 9.92291C7.69232 9.20486 7.33329 8.34166 7.33329 7.33333C7.33329 6.325 7.69232 5.4618 8.41038 4.74375C9.12843 4.02569 9.99163 3.66666 11 3.66666C12.0083 3.66666 12.8715 4.02569 13.5895 4.74375C14.3076 5.4618 14.6666 6.325 14.6666 7.33333C14.6666 8.34166 14.3076 9.20486 13.5895 9.92291C12.8715 10.641 12.0083 11 11 11ZM3.66663 16.5V15.7667C3.66663 15.2472 3.80046 14.7699 4.06813 14.3348C4.33579 13.8997 4.69085 13.5673 5.13329 13.3375C6.08051 12.8639 7.04301 12.5088 8.02079 12.2723C8.99857 12.0358 9.99163 11.9173 11 11.9167C12.0083 11.9161 13.0013 12.0346 13.9791 12.2723C14.9569 12.5101 15.9194 12.8651 16.8666 13.3375C17.3097 13.5667 17.665 13.8991 17.9327 14.3348C18.2004 14.7706 18.3339 15.2478 18.3333 15.7667V16.5C18.3333 17.0042 18.1539 17.4359 17.7952 17.7952C17.4365 18.1546 17.0047 18.3339 16.5 18.3333H5.49996C4.99579 18.3333 4.56435 18.154 4.20563 17.7952C3.8469 17.4365 3.66724 17.0048 3.66663 16.5ZM5.49996 16.5H16.5V15.7667C16.5 15.5986 16.4581 15.4458 16.3744 15.3083C16.2907 15.1708 16.1797 15.0639 16.0416 14.9875C15.2166 14.575 14.384 14.2658 13.5437 14.0598C12.7034 13.8539 11.8555 13.7506 11 13.75C10.1444 13.7494 9.29649 13.8527 8.45621 14.0598C7.61593 14.267 6.78329 14.5762 5.95829 14.9875C5.82079 15.0639 5.70988 15.1708 5.62554 15.3083C5.54121 15.4458 5.49935 15.5986 5.49996 15.7667V16.5ZM11 9.16666C11.5041 9.16666 11.9359 8.9873 12.2952 8.62858C12.6545 8.26986 12.8339 7.83811 12.8333 7.33333C12.8327 6.82855 12.6533 6.39711 12.2952 6.039C11.9371 5.68089 11.5053 5.50122 11 5.5C10.4946 5.49878 10.0631 5.67844 9.70563 6.039C9.34813 6.39955 9.16846 6.831 9.16663 7.33333C9.16479 7.83566 9.34446 8.26741 9.70563 8.62858C10.0668 8.98975 10.4982 9.16911 11 9.16666Z"
+                  fill="black" />
+              </svg>
+            </a>
+          </div>
+
+          <div class="nav__user-cart">
+            <a href="/" class="nav__user-cart-link">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M16.3016 5.83333C16.3464 5.57795 16.3347 5.31586 16.2674 5.06547C16.2001 4.81508 16.0788 4.58246 15.912 4.38393C15.7453 4.1854 15.5371 4.02577 15.3021 3.91626C15.067 3.80675 14.8109 3.75 14.5516 3.75H5.4483C5.18902 3.75 4.93289 3.80675 4.69787 3.91626C4.46286 4.02577 4.25466 4.1854 4.0879 4.38393C3.92113 4.58246 3.79984 4.81508 3.73253 5.06547C3.66523 5.31586 3.65354 5.57795 3.6983 5.83333M14.5833 3.75C14.6066 3.53333 14.6191 3.42583 14.6191 3.33666C14.62 2.92474 14.4684 2.52708 14.1934 2.22038C13.9184 1.91369 13.5395 1.7197 13.13 1.67583C13.0416 1.66666 12.9333 1.66666 12.7166 1.66666H7.2833C7.06663 1.66666 6.95746 1.66666 6.86913 1.67583C6.45955 1.7197 6.08072 1.91369 5.80573 2.22038C5.53074 2.52708 5.37906 2.92474 5.37996 3.33666C5.37996 3.42583 5.39163 3.53416 5.4158 3.75"
+                  stroke="black" stroke-width="1.5" />
+                <path
+                  d="M12.5 15H7.49999M17.6617 13.9942C17.37 16.0608 17.2242 17.095 16.4767 17.7142C15.7292 18.3333 14.6267 18.3333 12.4208 18.3333H7.57916C5.37416 18.3333 4.27082 18.3333 3.52332 17.7142C2.77582 17.095 2.62999 16.0617 2.33832 13.9942L1.98666 11.4942C1.61416 8.85749 1.42832 7.53999 2.21832 6.68583C3.00832 5.83333 4.41499 5.83333 7.22666 5.83333H12.7733C15.585 5.83333 16.9917 5.83333 17.7817 6.68666C18.405 7.36083 18.4208 8.32499 18.2158 9.99999"
+                  stroke="black" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+            </a>
+          </div>
+          <button id="offcanvas-toggle" class="nav__toggle" aria-label="Toggle navigation">
+            <svg width="24" height="17" viewBox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M1.66667 0H21.6667C22.1087 0 22.5326 0.175595 22.8452 0.488155C23.1577 0.800716 23.3333 1.22464 23.3333 1.66667C23.3333 2.10869 23.1577 2.53262 22.8452 2.84518C22.5326 3.15774 22.1087 3.33333 21.6667 3.33333H1.66667C1.22464 3.33333 0.800716 3.15774 0.488155 2.84518C0.175595 2.53262 0 2.10869 0 1.66667C0 1.22464 0.175595 0.800716 0.488155 0.488155C0.800716 0.175595 1.22464 0 1.66667 0V0ZM1.66667 13.3333H21.6667C22.1087 13.3333 22.5326 13.5089 22.8452 13.8215C23.1577 14.134 23.3333 14.558 23.3333 15C23.3333 15.442 23.1577 15.8659 22.8452 16.1785C22.5326 16.4911 22.1087 16.6667 21.6667 16.6667H1.66667C1.22464 16.6667 0.800716 16.4911 0.488155 16.1785C0.175595 15.8659 0 15.442 0 15C0 14.558 0.175595 14.134 0.488155 13.8215C0.800716 13.5089 1.22464 13.3333 1.66667 13.3333ZM1.66667 6.66667H21.6667C22.1087 6.66667 22.5326 6.84226 22.8452 7.15482C23.1577 7.46738 23.3333 7.89131 23.3333 8.33333C23.3333 8.77536 23.1577 9.19928 22.8452 9.51184C22.5326 9.8244 22.1087 10 21.6667 10H1.66667C1.22464 10 0.800716 9.8244 0.488155 9.51184C0.175595 9.19928 0 8.77536 0 8.33333C0 7.89131 0.175595 7.46738 0.488155 7.15482C0.800716 6.84226 1.22464 6.66667 1.66667 6.66667Z"
+                fill="black" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <!-- End of the Header One Area Here -->
+
   <main class="main">
     <!-- Hero Area Start Here -->
     <section class="hero hero--one">
@@ -154,19 +217,26 @@
     <!-- Why Choose Us Start Here -->
     <section class="why-choose-us">
       <div class="why-choose-us__container container">
-        <div class="why-choose-us__subtitle-wrap">
-          <p class="why-choose-us__subtitle subtitle">Why choose us</p>
-        </div>
-        <h2 class="why-choose-us__title title-2">We Fixed the <span class="highlight">Biggest Annoyance</span> in
-          Colouring</h2>
-        <p class="why-choose-us__subtitle-text subtitle-text">Because your offline break should feel calming, not
-          stressful.
-        </p>
+        <div class="why-choose-us__header">
+          <div class="why-choose-us__subtitle-wrap">
+            <p class="why-choose-us__subtitle subtitle">Why choose us</p>
+          </div>
+          <h2 class="why-choose-us__title title-2">We Fixed the <span class="highlight">Biggest Annoyance</span> in
+            Colouring</h2>
+          <p class="why-choose-us__subtitle-text subtitle-text">Because your offline break should feel calming, not
+            stressful.
+          </p>
 
-        <p class="why-choose-us__desc">Colouring is supposed to help you unwind, but thin paper, bleed-through, and
-          messy pages usually ruin the moment.</p>
-        <p class="why-choose-us__desc"> We redesigned the entire experience — with thicker pages, smarter layouts, and
-          tools that let you fully relax and enjoy your break without worrying about the ink.</p>
+          <p class="why-choose-us__desc">Colouring is supposed to help you unwind, but thin paper, bleed-through, and
+            messy pages usually ruin the moment.</p>
+          <p class="why-choose-us__desc"> We redesigned the entire experience — with thicker pages, smarter layouts, and
+            tools that let you fully relax and enjoy your break without worrying about the ink.</p>
+        </div>
+
+        <div class="why-choose-us__orbit-area">
+          <img src="./assets/images/orbit-img-2.png" alt="" class="why-choose-us__orbit-img">
+          <img src="./assets/images/orbit-book.png" alt="" class="why-choose-us__orbit-book">
+        </div>
 
         <div class="why-choose-us__btn-wrap">
           <a href="#" class="why-choose-us__btn btn btn--primary">Shop Vini Button</a>
@@ -183,44 +253,6 @@
           <h2 class="testimonials__title title-2">Loved by those who needed a break</h2>
           <p class="testimonials__subtitle-text subtitle-text">Join hundreds of others who traded scrolling for
             creating.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="testimonials">
-      <div class="testimonials__container container">
-        <div class="testimonials__header">
-          <p class="testimonials__subtitle">What people says 💬</p>
-          <h2 class="testimonials__title">Loved by those who needed a break</h2>
-        </div>
-
-        <div class="testimonials__main">
-          <div class="testimonials__visuals">
-            <div class="avatar-orbit">
-              <img src="..." class="avatar" data-index="0">
-              <img src="..." class="avatar" data-index="1">
-              <img src="..." class="avatar active" data-index="2"> <img src="..." class="avatar" data-index="3">
-              <img src="..." class="avatar" data-index="4">
-            </div>
-          </div>
-
-
-
-
-          <div class="testimonials__nav">
-            <span class="dot" data-index="0"></span>
-            <span class="dot" data-index="1"></span>
-            <span class="dot active" data-index="2"></span> <span class="dot" data-index="3"></span>
-            <span class="dot" data-index="4"></span>
-          </div>
-
-          <div class="testimonials__content">
-            <div class="quote-box">
-              <p id="testimonial-text">My screen-time report was bullying me. I bought this hoping it would stop my 11
-                PM doomscrolling.</p>
-              <strong id="testimonial-author">Lieke Visser</strong>
-            </div>
-          </div>
         </div>
       </div>
     </section>

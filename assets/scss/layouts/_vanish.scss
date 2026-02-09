@@ -1,0 +1,96 @@
+ @use '../utils/variables' as *;
+
+ .vanish {
+     background: url('../images/vanish-vain-bg.png') bottom/cover no-repeat;
+     min-height: 100vh;
+ }
+
+ .vanish__title {
+     color: $black-color;
+     font-size: clamp(2.5rem, 6vw, 5rem);
+     font-weight: 400;
+     margin-bottom: 15px;
+     letter-spacing: 0;
+     line-height: 1.1;
+     text-align: center;
+ }
+
+ .vanish__subtitle {
+     font-size: 1.5rem;
+     color: $black-color;
+     line-height: 1.3;
+     font-weight: 400;
+     text-align: center;
+ }
+
+ .vanish__card {
+     margin-top: 6.875rem;
+     border: 1px solid $primary-color;
+     background: rgba(255, 255, 255, 0.35);
+     border-radius: 35px;
+     padding: 1.8rem;
+     box-shadow: 0px 0px 13px 0px rgba(255, 128, 0, 0.55);
+     -webkit-box-shadow: 0px 0px 13px 0px rgba(255, 128, 0, 0.55);
+     -moz-box-shadow: 0px 0px 13px 0px rgba(255, 128, 0, 0.55);
+     backdrop-filter: blur(25px);
+     -webkit-backdrop-filter: blur(25px);
+ }
+
+ .vanish__input {
+     width: 100%;
+     min-height: 84px;
+     max-height: fit-content;
+     background: transparent;
+     border: none;
+     border-bottom: 1px solid $primary-color;
+     outline: none;
+     font-size: 1.4rem;
+     color: $black-color;
+     resize: none;
+     font-weight: 300;
+ }
+
+ .vanish__input::placeholder {
+     color: #7F7F7F;
+     font-size: 1rem;
+     line-height: 20px;
+     font-weight: 300;
+ }
+
+ .vanish__footer {
+     display: flex;
+     justify-content: flex-end;
+     margin-top: 20px;
+ }
+
+ /* 5. The Vanish Button */
+ .vanish__button {
+     background: $primary-color;
+     padding: 5px 28px;
+     border-radius: 20px;
+     color: $white-color;
+     font-size: 12px;
+     line-height: 20px;
+     cursor: pointer;
+     transition: all 0.3s ease;
+     border: none;
+ }
+
+ .vanish__button:hover {
+     background: $primary-color;
+     transform: translateY(-1px);
+ }
+
+ .vanish__button.disabled {
+     opacity: 0.5;
+     pointer-events: none;
+ }
+
+ .vanish__disclaimer {
+     font-size: 1rem;
+     line-height: 1.5;
+     font-weight: 300;
+     color: $black-color;
+     margin-top: 1rem;
+     text-align: center;
+ }

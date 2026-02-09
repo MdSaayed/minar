@@ -1,466 +1,141 @@
-<!-- product title font family -->
-<!-- home page product card font family -->
-
-
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vini: The Quiet Escape - Product Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minar Ease - Vanish</title>
     <style>
+        /* 1. Global Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        /* 2. Page Wrapper with a more vibrant background */
         body {
-            font-family: system-ui, sans-serif;
-            background: #fdfaf5;
-            color: #333;
-            line-height: 1.5;
-        }
-
-        .product {
-            background: #fef9f2;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-        }
-
-        .product--product-page {}
-
-        .product__container {
-            max-width: 1200px;
-            margin: 0 auto;
+            font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* Multi-layered gradient to mimic the fabric look in the image */
+            background: #ffb169; 
+            background: radial-gradient(circle at 20% 20%, #ffcf96 0%, #ff9f45 60%, #ff810c 100%);
             padding: 20px;
+            color: #1a1a1a;
         }
 
-        .product__content {
-            display: flex;
-            gap: 32px;
-            padding: 40px;
-        }
-
-        @media (max-width: 900px) {
-            .product__content {
-                flex-direction: column;
-                gap: 24px;
-                padding: 24px;
-            }
-        }
-
-        .product__image-wrap {
-            flex: 0 0 60%;
-            display: flex;
-            gap: 16px;
-        }
-
-        @media (max-width: 900px) {
-            .product__image-wrap {
-                flex-direction: column;
-                flex: 0 0 100%;
-            }
-        }
-
-        .product__main-slider {
-            flex: 1;
-            position: relative;
-            background: #f8f4ed;
-            border-radius: 16px;
-            overflow: hidden;
-            aspect-ratio: 1 / 1.1;
-            user-select: none;
-            touch-action: pan-y;
-            max-height: 480px;
-
-        }
-
-        .product__slider-inner {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            will-change: transform;
-        }
-
-        .product__slide {
-            flex: 0 0 100%;
-            position: relative;
-        }
-
-        .product__slide img {
+        /* 3. Vanish Block (BEM) */
+        .vanish {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            pointer-events: none;
-            user-drag: none;
-        }
-
-        .product__price-tag {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(8px);
-            padding: 12px 20px;
-            border-radius: 50px;
-            font-size: 1.4rem;
-            font-weight: 700;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-            z-index: 10;
-        }
-
-        .product__thumbnails {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            width: 100px;
-            flex-shrink: 0;
-        }
-
-        @media (max-width: 900px) {
-            .product__thumbnails {
-                flex-direction: row;
-                width: 100%;
-                overflow-x: auto;
-                padding-bottom: 8px;
-            }
-
-            .product__thumb {
-                width: 90px;
-                flex-shrink: 0;
-            }
-        }
-
-        .product__thumb {
-            aspect-ratio: 1 / 1;
-            border-radius: 12px;
-            overflow: hidden;
-            cursor: pointer;
-            border: 3px solid transparent;
-            transition: all 0.18s;
-            background: #f8f4ed;
-        }
-
-        .product__thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .product__thumb--active,
-        .product__thumb:hover {
-            border-color: #e07a5f;
-            transform: scale(1.06);
-        }
-
-        .product__info {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .product__title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #2d1b0f;
-        }
-
-        .product__subtitle {
-            font-size: 1.2rem;
-            color: #5c4033;
-        }
-
-        .product__description {
-            font-size: 1.1rem;
-            color: #6b4e3d;
-        }
-
-        .product__features {
-            list-style: none;
-            margin: 16px 0;
-        }
-
-        .product__features li {
-            margin: 10px 0;
-            font-size: 1.05rem;
-            position: relative;
-            padding-left: 24px;
-        }
-
-        .product__features li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #e07a5f;
-            font-size: 1.5rem;
-            line-height: 1;
-        }
-
-        .product__price-section {
-            margin-top: 28px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .product__current-price {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: #d62828;
-        }
-
-        .product__quantity {
-            display: flex;
-            align-items: center;
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 50px;
-            overflow: hidden;
-        }
-
-        .product__quantity-btn {
-            width: 48px;
-            height: 48px;
-            border: none;
-            background: #f8f4ed;
-            font-size: 1.4rem;
-            cursor: pointer;
-        }
-
-        .product__quantity-btn:hover {
-            background: #f0e8dd;
-        }
-
-        .product__quantity-value {
-            width: 70px;
+            max-width: 860px;
             text-align: center;
-            font-size: 1.4rem;
-            font-weight: 600;
         }
 
-        .product__buy-btn {
-            background: #f4a261;
-            color: white;
+        .vanish__title {
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 500;
+            margin-bottom: 12px;
+            letter-spacing: -1.5px;
+        }
+
+        .vanish__subtitle {
+            font-size: 1.15rem;
+            margin-bottom: 50px;
+            color: rgba(0, 0, 0, 0.7);
+            font-weight: 400;
+        }
+
+        /* 4. The Glassmorphism Card Element */
+        .vanish__card {
+            background: rgba(255, 255, 255, 0.18); /* Transparent white */
+            border: 1px solid rgba(255, 255, 255, 0.4); /* Light border for edge highlight */
+            border-radius: 35px;
+            padding: 50px 45px 35px 45px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+            
+            /* Crucial for the glass effect */
+            backdrop-filter: blur(25px); 
+            -webkit-backdrop-filter: blur(25px); 
+            
+            margin-bottom: 30px;
+        }
+
+        .vanish__input {
+            width: 100%;
+            height: 110px;
+            background: transparent;
             border: none;
-            padding: 16px 40px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: 0 6px 20px rgba(244, 162, 97, 0.35);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08); /* Soft line */
+            outline: none;
+            font-size: 1.4rem;
+            color: #2d2d2d;
+            resize: none;
+            font-weight: 300;
         }
 
-        .product__buy-btn:hover {
-            background: #e76f51;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(231, 111, 81, 0.4);
+        .vanish__input::placeholder {
+            color: rgba(0, 0, 0, 0.25);
+        }
+
+        .vanish__footer {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 25px;
+        }
+
+        /* 5. The Vanish Button */
+        .vanish__button {
+            background: rgba(255, 255, 255, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 28px;
+            border-radius: 20px;
+            color: #ffffff;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .vanish__button:hover {
+            background: rgba(255, 255, 255, 0.65);
+            transform: translateY(-1px);
+        }
+
+        .vanish__disclaimer {
+            font-size: 0.85rem;
+            color: rgba(0, 0, 0, 0.45);
+        }
+
+        /* Accessibility: focus state for the card when typing */
+        .vanish__input:focus {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
-
 <body>
 
-    <div class="product__container">
-        <div class="product product--product-page">
+    <section class="vanish">
+        <h1 class="vanish__title">Let something go for today.</h1>
+        <p class="vanish__subtitle">
+            Write what's been bothering you? When you're ready, we'll let it vanish together.
+        </p>
 
-            <div class="product__content">
-
-                <div class="product__image-wrap">
-
-                    <div class="product__main-slider" id="slider">
-                        <div class="product__slider-inner" id="sliderInner"></div>
-                        <div class="product__price-tag">$3,549</div>
-                    </div>
-
-                    <div class="product__thumbnails" id="thumbnails"></div>
-
-                </div>
-
-                <div class="product__info">
-                    <div>
-                        <h1 class="product__title">Vini: The Quiet Escape</h1>
-                        <div class="product__subtitle">Minar Ease</div>
-                        <p class="product__description">
-                            Adult coloring book for relaxation and mindfulness with easy access.
-                        </p>
-                    </div>
-
-                    <ul class="product__features">
-                        <li>Thick 200gsm pages</li>
-                        <li>Single-sided artwork</li>
-                        <li>Protective sheet included</li>
-                        <li>Modern, gender-neutral illustrations</li>
-                        <li>Made for quiet breaks</li>
-                    </ul>
-
-                    <div class="product__price-section">
-                        <div class="product__current-price">$3,549</div>
-
-                        <div class="product__quantity">
-                            <button class="product__quantity-btn" onclick="changeQty(-1)">−</button>
-                            <span id="qty" class="product__quantity-value">2</span>
-                            <button class="product__quantity-btn" onclick="changeQty(1)">+</button>
-                        </div>
-
-                        <button class="product__buy-btn">Buy Now →</button>
-                    </div>
-                </div>
-
+        <div class="vanish__card">
+            <textarea 
+                class="vanish__input" 
+                placeholder="Type anything that feels heavy right now..."
+            ></textarea>
+            
+            <div class="vanish__footer">
+                <button class="vanish__button">Let it vanish</button>
             </div>
-
         </div>
-    </div>
 
-    <script>
-        // ────────────────────────────────────────────────
-        const images = [
-            "https://images.unsplash.com/photo-1606857521015-7f9fcf423740?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1580130379624-3a069adbffc5?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=800&q=80"
-        ];
-
-        let currentIndex = 0;
-        const slider = document.getElementById("slider");
-        const sliderInner = document.getElementById("sliderInner");
-        const thumbnails = document.getElementById("thumbnails");
-
-        // Build slides
-        images.forEach(src => {
-            const slide = document.createElement("div");
-            slide.className = "product__slide";
-            const img = document.createElement("img");
-            img.src = src;
-            img.draggable = false;
-            slide.appendChild(img);
-            sliderInner.appendChild(slide);
-        });
-
-        // Thumbnails
-        images.forEach((src, i) => {
-            const div = document.createElement("div");
-            div.className = "product__thumb" + (i === 0 ? " product__thumb--active" : "");
-            const img = document.createElement("img");
-            img.src = src;
-            img.draggable = false;
-            div.appendChild(img);
-
-            div.onclick = () => {
-                currentIndex = i;
-                goToIndex(currentIndex);
-                updateThumbs();
-            };
-
-            thumbnails.appendChild(div);
-        });
-
-        function updateThumbs() {
-            document.querySelectorAll(".product__thumb").forEach((t, i) => {
-                t.classList.toggle("product__thumb--active", i === currentIndex);
-            });
-        }
-
-        function goToIndex(idx, smooth = true) {
-            sliderInner.style.transition = smooth
-                ? "transform 0.4s cubic-bezier(0.23,1,0.32,1)"
-                : "none";
-            sliderInner.style.transform = `translateX(-${idx * 100}%)`;
-            currentIndex = idx;
-            updateThumbs();
-        }
-
-        // Quantity
-        let qty = 2;
-        document.getElementById("qty").textContent = qty;
-
-        window.changeQty = d => {
-            qty = Math.max(1, qty + d);
-            document.getElementById("qty").textContent = qty;
-        };
-
-        // ─── Drag logic ───────────────────────────────────────
-        let isDragging = false;
-        let startX = 0;
-        let currentTranslate = 0;
-        let prevTranslate = 0;
-        let animationFrame;
-
-        function getX(e) {
-            return e.type.includes("mouse") ? e.pageX : e.touches?.[0]?.clientX || 0;
-        }
-
-        function setPosition() {
-            sliderInner.style.transform = `translateX(${currentTranslate}px)`;
-        }
-
-        function animate() {
-            setPosition();
-            if (isDragging) animationFrame = requestAnimationFrame(animate);
-        }
-
-        function start(e) {
-            isDragging = true;
-            startX = getX(e);
-            prevTranslate = -currentIndex * slider.offsetWidth;
-            currentTranslate = prevTranslate;
-            sliderInner.style.transition = "none";
-            cancelAnimationFrame(animationFrame);
-            animationFrame = requestAnimationFrame(animate);
-            e.preventDefault();
-        }
-
-        function move(e) {
-            if (!isDragging) return;
-            const x = getX(e);
-            currentTranslate = prevTranslate + (x - startX);
-
-            // Light edge resistance
-            const max = 0;
-            const min = -(images.length - 1) * slider.offsetWidth;
-            if (currentTranslate > max) currentTranslate = max + (currentTranslate - max) * 0.35;
-            if (currentTranslate < min) currentTranslate = min + (currentTranslate - min) * 0.35;
-        }
-
-        function end() {
-            if (!isDragging) return;
-            isDragging = false;
-            cancelAnimationFrame(animationFrame);
-
-            const movedBy = currentTranslate - prevTranslate;
-            const threshold = slider.offsetWidth * 0.22;
-
-            let targetIndex = currentIndex;
-
-            if (movedBy < -threshold && currentIndex < images.length - 1) {
-                targetIndex++;
-            } else if (movedBy > threshold && currentIndex > 0) {
-                targetIndex--;
-            }
-
-            sliderInner.style.transition = "transform 0.42s cubic-bezier(0.25,0.8,0.25,1)";
-            goToIndex(targetIndex);
-        }
-
-        // Events
-        slider.addEventListener("mousedown", start);
-        window.addEventListener("mousemove", move);
-        window.addEventListener("mouseup", end);
-
-        slider.addEventListener("touchstart", start, { passive: false });
-        window.addEventListener("touchmove", move, { passive: false });
-        window.addEventListener("touchend", end);
-        window.addEventListener("touchcancel", end);
-
-        slider.addEventListener("dragstart", e => e.preventDefault());
-    </script>
+        <p class="vanish__disclaimer">
+            Nothing written here is saved or stored. It disappears from this page.
+        </p>
+    </section>
 
 </body>
-
 </html>

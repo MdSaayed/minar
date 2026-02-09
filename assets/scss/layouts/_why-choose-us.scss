@@ -1,8 +1,10 @@
 @use '../utils/variables' as *;
 
 .why-choose-us {
+    background: $light-orange-color;
+    background-image: radial-gradient(circle at 4px 4px, #fdcc61 1.5px, transparent 0);
+    background-size: 30px 30px;
     position: relative;
-    background: url('../images/why-choose-us-bg.png') bottom/cover no-repeat;
 
     &::after {
         content: "";
@@ -35,11 +37,15 @@
     &__subtitle-wrap {
         display: flex;
         justify-content: center;
+        position: relative;
+        z-index: 10;
     }
 
     &__title {
         text-align: center;
         margin-top: 1rem;
+        position: relative;
+        z-index: 10;
     }
 
     &__subtitle-text {
@@ -48,6 +54,8 @@
         margin-right: auto;
         text-align: center;
         margin-bottom: 1.8rem;
+        position: relative;
+        z-index: 10;
     }
 
     &__desc {
@@ -59,15 +67,84 @@
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 1.5rem;
+        position: relative;
+        z-index: 10;
+    }
+
+    &__orbit-area {
+        // background: url('../images/orbit-line.png') center/cover no-repeat;
+        margin-top: -240px;
+        position: relative;
+        z-index: 5;
+
+        @media(max-width: 1300px) {
+            margin-top: -100px;
+        }
+
+        @media(max-width: 800px) {
+            margin-top: 0px;
+        }
+    }
+
+    &__orbit-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        animation: spin 25s linear infinite;
+    }
+
+    &__orbit-book {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 500px;
+
+        @media(max-width: 1300px) {
+            max-width: 400px;
+        }
+
+        @media(max-width: 1150px) {
+            max-width: 300px;
+        }
+
+        @media(max-width: 768px) {
+            max-width: 270px;
+        }
+
+        @media(max-width: 768px) {
+            max-width: 270px;
+        }
+
+        @media(max-width: 700px) {
+            max-width: 100px;
+        }
     }
 
 
     &__btn-wrap {
         display: flex;
         justify-content: center;
+        position: relative;
+        z-index: 10;
     }
 
     &__btn {
         padding: 12px 56px;
     }
+
+    .rotate-img {
+        animation: spin 10s linear infinite;
+    }
+
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
 }
