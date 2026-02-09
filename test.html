@@ -3,139 +3,739 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minar Ease - Vanish</title>
+    <title>Testimonials Section</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* 1. Global Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        /* 2. Page Wrapper with a more vibrant background */
+        
         body {
-            font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            /* Multi-layered gradient to mimic the fabric look in the image */
-            background: #ffb169; 
-            background: radial-gradient(circle at 20% 20%, #ffcf96 0%, #ff9f45 60%, #ff810c 100%);
+            background-color: #f8f9fa;
+            color: #333;
             padding: 20px;
-            color: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
-
-        /* 3. Vanish Block (BEM) */
-        .vanish {
+        
+        .testimonials {
             width: 100%;
-            max-width: 860px;
+            max-width: 1200px;
+            padding: 40px 20px;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+        
+        .testimonials__title {
             text-align: center;
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
         }
-
-        .vanish__title {
-            font-size: clamp(2.2rem, 5vw, 3.8rem);
-            font-weight: 500;
-            margin-bottom: 12px;
-            letter-spacing: -1.5px;
-        }
-
-        .vanish__subtitle {
-            font-size: 1.15rem;
+        
+        .testimonials__subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #7f8c8d;
             margin-bottom: 50px;
-            color: rgba(0, 0, 0, 0.7);
-            font-weight: 400;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
-
-        /* 4. The Glassmorphism Card Element */
-        .vanish__card {
-            background: rgba(255, 255, 255, 0.18); /* Transparent white */
-            border: 1px solid rgba(255, 255, 255, 0.4); /* Light border for edge highlight */
-            border-radius: 35px;
-            padding: 50px 45px 35px 45px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
-            
-            /* Crucial for the glass effect */
-            backdrop-filter: blur(25px); 
-            -webkit-backdrop-filter: blur(25px); 
-            
+        
+        .testimonials__container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 60px;
+        }
+        
+        @media (min-width: 992px) {
+            .testimonials__container {
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+        
+        .testimonials__circle-container {
+            flex: 1;
+            max-width: 500px;
+            position: relative;
+            height: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .testimonials__circle-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            z-index: 10;
+        }
+        
+        .testimonials__circle-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.5s ease;
+        }
+        
+        .testimonials__circle-image--active {
+            border-color: #3498db;
+            box-shadow: 0 20px 40px rgba(52, 152, 219, 0.3);
+            transform: scale(1.1);
+        }
+        
+        .testimonials__orbit-images {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .testimonials__orbit-item {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            border: 4px solid white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+        
+        .testimonials__orbit-item:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .testimonials__orbit-item--active {
+            border-color: #3498db;
+            box-shadow: 0 15px 30px rgba(52, 152, 219, 0.3);
+            transform: scale(1.15);
+            z-index: 5;
+        }
+        
+        .testimonials__orbit-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Position orbit items in a circle */
+        .testimonials__orbit-item--pos-1 { top: 10%; left: 50%; transform: translateX(-50%); }
+        .testimonials__orbit-item--pos-2 { top: 30%; right: 10%; }
+        .testimonials__orbit-item--pos-3 { bottom: 30%; right: 10%; }
+        .testimonials__orbit-item--pos-4 { bottom: 10%; left: 50%; transform: translateX(-50%); }
+        .testimonials__orbit-item--pos-5 { bottom: 30%; left: 10%; }
+        
+        .testimonials__content {
+            flex: 1;
+            max-width: 600px;
+            padding: 20px;
+        }
+        
+        .testimonials__quote {
+            font-size: 1.4rem;
+            line-height: 1.7;
+            color: #34495e;
+            font-style: italic;
+            margin-bottom: 25px;
+            position: relative;
+            padding-left: 30px;
+            min-height: 180px;
+        }
+        
+        .testimonials__quote::before {
+            content: "“";
+            font-size: 5rem;
+            color: #3498db;
+            position: absolute;
+            left: -15px;
+            top: -25px;
+            opacity: 0.7;
+        }
+        
+        .testimonials__author {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .testimonials__author-role {
+            font-size: 1rem;
+            color: #7f8c8d;
             margin-bottom: 30px;
         }
-
-        .vanish__input {
-            width: 100%;
-            height: 110px;
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08); /* Soft line */
-            outline: none;
-            font-size: 1.4rem;
-            color: #2d2d2d;
-            resize: none;
-            font-weight: 300;
-        }
-
-        .vanish__input::placeholder {
-            color: rgba(0, 0, 0, 0.25);
-        }
-
-        .vanish__footer {
+        
+        .testimonials__pagination {
             display: flex;
-            justify-content: flex-end;
-            margin-top: 25px;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
+            flex-wrap: wrap;
         }
-
-        /* 5. The Vanish Button */
-        .vanish__button {
-            background: rgba(255, 255, 255, 0.45);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 10px 28px;
-            border-radius: 20px;
-            color: #ffffff;
-            font-size: 0.9rem;
+        
+        .testimonials__pagination-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #dfe6e9;
             cursor: pointer;
             transition: all 0.3s ease;
         }
-
-        .vanish__button:hover {
-            background: rgba(255, 255, 255, 0.65);
-            transform: translateY(-1px);
+        
+        .testimonials__pagination-dot:hover {
+            background-color: #b2bec3;
+            transform: scale(1.2);
         }
-
-        .vanish__disclaimer {
-            font-size: 0.85rem;
-            color: rgba(0, 0, 0, 0.45);
+        
+        .testimonials__pagination-dot--active {
+            background-color: #3498db;
+            transform: scale(1.3);
         }
-
-        /* Accessibility: focus state for the card when typing */
-        .vanish__input:focus {
-            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        
+        .testimonials__tag {
+            display: inline-block;
+            background-color: #e8f4fc;
+            color: #3498db;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .testimonials__pagination-info {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-top: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .testimonials__title {
+                font-size: 2.2rem;
+            }
+            
+            .testimonials__quote {
+                font-size: 1.2rem;
+                padding-left: 20px;
+                min-height: 150px;
+            }
+            
+            .testimonials__quote::before {
+                font-size: 4rem;
+                left: -10px;
+                top: -15px;
+            }
+            
+            .testimonials__circle-container {
+                height: 300px;
+            }
+            
+            .testimonials__circle-center {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .testimonials__orbit-item {
+                width: 80px;
+                height: 80px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .testimonials__circle-container {
+                height: 250px;
+            }
+            
+            .testimonials__circle-center {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .testimonials__orbit-item {
+                width: 70px;
+                height: 70px;
+            }
         }
     </style>
 </head>
 <body>
-
-    <section class="vanish">
-        <h1 class="vanish__title">Let something go for today.</h1>
-        <p class="vanish__subtitle">
-            Write what's been bothering you? When you're ready, we'll let it vanish together.
-        </p>
-
-        <div class="vanish__card">
-            <textarea 
-                class="vanish__input" 
-                placeholder="Type anything that feels heavy right now..."
-            ></textarea>
+    <section class="testimonials">
+        <div class="testimonials__header">
+            <div class="testimonials__tag">What people says</div>
+            <h2 class="testimonials__title">Loved by those who needed a break</h2>
+            <p class="testimonials__subtitle">Join hundreds of others who traded scrolling for creating.</p>
+        </div>
+        
+        <div class="testimonials__container">
+            <!-- Circle Layout Images -->
+            <div class="testimonials__circle-container">
+                <!-- Center Image -->
+                <div class="testimonials__circle-center">
+                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+                         alt="Likee Visser" class="testimonials__circle-image testimonials__circle-image--active" id="center-image">
+                </div>
+                
+                <!-- Orbit Images (5 positions around circle) -->
+                <div class="testimonials__orbit-images">
+                    <!-- These will show first 5 testimonials initially -->
+                    <div class="testimonials__orbit-item testimonials__orbit-item--pos-1 testimonials__orbit-item--active" data-testimonial-id="0">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+                             alt="Likee Visser" class="testimonials__orbit-image">
+                    </div>
+                    
+                    <div class="testimonials__orbit-item testimonials__orbit-item--pos-2" data-testimonial-id="1">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+                             alt="Alex Morgan" class="testimonials__orbit-image">
+                    </div>
+                    
+                    <div class="testimonials__orbit-item testimonials__orbit-item--pos-3" data-testimonial-id="2">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+                             alt="Samira Khan" class="testimonials__orbit-image">
+                    </div>
+                    
+                    <div class="testimonials__orbit-item testimonials__orbit-item--pos-4" data-testimonial-id="3">
+                        <img src="https://images.unsplash.com/photo-1507591064344-4c6ce005-128b-5220-9b2b-5e2c9c0eacb7?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+                             alt="Jamie Rivera" class="testimonials__orbit-image">
+                    </div>
+                    
+                    <div class="testimonials__orbit-item testimonials__orbit-item--pos-5" data-testimonial-id="4">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+                             alt="Michael Chen" class="testimonials__orbit-image">
+                    </div>
+                    
+                    <!-- Hidden orbit items for other pages -->
+                    <div class="testimonials__orbit-item testimonials__orbit-item--pos-1" data-testimonial-id="5" style="display: none;">
+                        <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+                             alt="Sofia Rodriguez" class="testimonials__orbit-image">
+                    </div>
+                    
+                    <div class="testimonials__orbit-item testimonials__orbit-item--pos-2" data-testimonial-id="6" style="display: none;">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+                             alt="Emma Wilson" class="testimonials__orbit-image">
+                    </div>
+                    
+                    <div class="testimonials__orbit-item testimonials__orbit-item--pos-3" data-testimonial-id="7" style="display: none;">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+                             alt="David Kim" class="testimonials__orbit-image">
+                    </div>
+                    
+                    <div class="testimonials__orbit-item testimonials__orbit-item--pos-4" data-testimonial-id="8" style="display: none;">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+                             alt="Maria Garcia" class="testimonials__orbit-image">
+                    </div>
+                    
+                    <div class="testimonials__orbit-item testimonials__orbit-item--pos-5" data-testimonial-id="9" style="display: none;">
+                        <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+                             alt="James Taylor" class="testimonials__orbit-image">
+                    </div>
+                    
+                    <!-- Continue for more testimonials... -->
+                </div>
+            </div>
             
-            <div class="vanish__footer">
-                <button class="vanish__button">Let it vanish</button>
+            <!-- Content Section -->
+            <div class="testimonials__content">
+                <!-- Content Display -->
+                <div class="testimonials__quote" id="testimonial-quote">
+                    My screen-time report was bullying me. I bought this hoping it would stop my 11 PM doomscrolling — and somehow it worked. I colour for 20 minutes and my brain finally relaxes. Cheaper than therapy.
+                </div>
+                
+                <div class="testimonials__author-info">
+                    <h4 class="testimonials__author" id="testimonial-author">Likee Visser</h4>
+                    <p class="testimonials__author-role" id="testimonial-role">Graphic Designer, Amsterdam</p>
+                </div>
+                
+                <!-- Hidden Testimonial Data -->
+                <!-- Page 1 (0-4) -->
+                <div class="testimonials__data" 
+                     data-testimonial-id="0"
+                     data-testimonial-name="Likee Visser"
+                     data-testimonial-role="Graphic Designer, Amsterdam"
+                     data-testimonial-content="My screen-time report was bullying me. I bought this hoping it would stop my 11 PM doomscrolling — and somehow it worked. I colour for 20 minutes and my brain finally relaxes. Cheaper than therapy."
+                     data-testimonial-img="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"></div>
+                
+                <div class="testimonials__data" 
+                     data-testimonial-id="1"
+                     data-testimonial-name="Alex Morgan"
+                     data-testimonial-role="Software Developer, San Francisco"
+                     data-testimonial-content="This product completely changed my evening routine. Instead of mindlessly scrolling through social media, I now spend my time creating beautiful art. My anxiety has decreased significantly."
+                     data-testimonial-img="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"></div>
+                
+                <div class="testimonials__data" 
+                     data-testimonial-id="2"
+                     data-testimonial-name="Samira Khan"
+                     data-testimonial-role="Marketing Manager, London"
+                     data-testimonial-content="As someone who struggles with digital burnout, this has been a lifesaver. The creative process helps me unwind and disconnect from the constant notifications."
+                     data-testimonial-img="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"></div>
+                
+                <div class="testimonials__data" 
+                     data-testimonial-id="3"
+                     data-testimonial-name="Jamie Rivera"
+                     data-testimonial-role="Teacher, Toronto"
+                     data-testimonial-content="I've tried meditation apps, journals, and even therapy for my nighttime anxiety. Nothing worked as well as this simple creative activity."
+                     data-testimonial-img="https://images.unsplash.com/photo-1507591064344-4c6ce005-128b-5220-9b2b-5e2c9c0eacb7?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"></div>
+                
+                <div class="testimonials__data" 
+                     data-testimonial-id="4"
+                     data-testimonial-name="Michael Chen"
+                     data-testimonial-role="Accountant, New York"
+                     data-testimonial-content="The best investment I made for my mental health this year. It's amazing how 20 minutes of coloring can reset my mind after a stressful day at work."
+                     data-testimonial-img="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"></div>
+                
+                <!-- Page 2 (5-9) -->
+                <div class="testimonials__data" 
+                     data-testimonial-id="5"
+                     data-testimonial-name="Sofia Rodriguez"
+                     data-testimonial-role="Architect, Barcelona"
+                     data-testimonial-content="My whole family uses this now! We have a 'digital detox hour' every evening where we all create instead of consuming content. It's brought us closer together."
+                     data-testimonial-img="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"></div>
+                
+                <div class="testimonials__data" 
+                     data-testimonial-id="6"
+                     data-testimonial-name="Emma Wilson"
+                     data-testimonial-role="Nurse, Chicago"
+                     data-testimonial-content="As a busy mom, I rarely have time for myself. This gives me 20 minutes of pure joy and creativity. It's my daily self-care ritual."
+                     data-testimonial-img="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"></div>
+                
+                <div class="testimonials__data" 
+                     data-testimonial-id="7"
+                     data-testimonial-name="David Kim"
+                     data-testimonial-role="Entrepreneur, Seattle"
+                     data-testimonial-content="I was skeptical at first, but after just one week I noticed a difference in my sleep quality. The act of creating instead of consuming is transformative."
+                     data-testimonial-img="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"></div>
+                
+                <div class="testimonials__data" 
+                     data-testimonial-id="8"
+                     data-testimonial-name="Maria Garcia"
+                     data-testimonial-role="Writer, Madrid"
+                     data-testimonial-content="Perfect for unwinding after a long day. It's more effective than scrolling through social media and leaves me feeling accomplished."
+                     data-testimonial-img="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"></div>
+                
+                <div class="testimonials__data" 
+                     data-testimonial-id="9"
+                     data-testimonial-name="James Taylor"
+                     data-testimonial-role="Photographer, Melbourne"
+                     data-testimonial-content="I gifted this to three friends already. Everyone needs this digital detox in their life. The quality is exceptional."
+                     data-testimonial-img="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"></div>
+                
+                <!-- Page 3 (10-14) -->
+                <div class="testimonials__data" 
+                     data-testimonial-id="10"
+                     data-testimonial-name="Robert Brown"
+                     data-testimonial-role="Professor, Boston"
+                     data-testimonial-content="After years of meditation apps, this hands-on approach finally worked for me. The tactile experience is key to disconnecting."
+                     data-testimonial-img="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"></div>
+                
+                <div class="testimonials__data" 
+                     data-testimonial-id="11"
+                     data-testimonial-name="Lisa Wang"
+                     data-testimonial-role="Data Analyst, Singapore"
+                     data-testimonial-content="My screen time decreased by 40% in the first month. I now look forward to my creative time instead of mindless scrolling."
+                     data-testimonial-img="https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"></div>
+                
+                <div class="testimonials__data" 
+                     data-testimonial-id="12"
+                     data-testimonial-name="Thomas Lee"
+                     data-testimonial-role="Chef, Paris"
+                     data-testimonial-content="The perfect balance between creativity and relaxation. It's become my go-to gift for friends and family."
+                     data-testimonial-img="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"></div>
+                
+                <div class="testimonials__data" 
+                     data-testimonial-id="13"
+                     data-testimonial-name="Sarah Johnson"
+                     data-testimonial-role="Artist, Austin"
+                     data-testimonial-content="As someone with ADHD, this helps me focus my restless energy into something beautiful and calming."
+                     data-testimonial-img="https://images.unsplash.com/photo-1542206395-9feb3edaa681?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"></div>
+                
+                <div class="testimonials__data" 
+                     data-testimonial-id="14"
+                     data-testimonial-name="Kevin Patel"
+                     data-testimonial-role="Engineer, Dubai"
+                     data-testimonial-content="Simple yet powerful. This small change in my routine has improved my mental health more than I expected."
+                     data-testimonial-img="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"></div>
+                
+                <!-- Page 4 (15-19) -->
+                <div class="testimonials__data" 
+                     data-testimonial-id="15"
+                     data-testimonial-name="Emma Davis"
+                     data-testimonial-role="Yoga Instructor, Bali"
+                     data-testimonial-content="Combining this with my meditation practice has been revolutionary. It's mindfulness in action."
+                     data-testimonial-img="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"></div>
+                
+                <div class="testimonials__data" 
+                     data-testimonial-id="16"
+                     data-testimonial-name="Daniel Miller"
+                     data-testimonial-role="Consultant, Berlin"
+                     data-testimonial-content="Better than any productivity app. It actually helps me relax instead of adding more digital stress."
+                     data-testimonial-img="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"></div>
+                
+                <div class="testimonials__data" 
+                     data-testimonial-id="17"
+                     data-testimonial-name="Olivia Wilson"
+                     data-testimonial-role="Student, Tokyo"
+                     data-testimonial-content="Perfect for study breaks. It helps me reset my brain much better than social media scrolling."
+                     data-testimonial-img="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"></div>
+                
+                <div class="testimonials__data" 
+                     data-testimonial-id="18"
+                     data-testimonial-name="Chris Evans"
+                     data-testimonial-role="Designer, Copenhagen"
+                     data-testimonial-content="As a designer, I appreciate the aesthetic. But more importantly, it helps me disconnect from screens."
+                     data-testimonial-img="https://images.unsplash.com/photo-1507591064344-4c6ce005-128b-5220-9b2b-5e2c9c0eacb7?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"></div>
+                
+                <div class="testimonials__data" 
+                     data-testimonial-id="19"
+                     data-testimonial-name="Sophia Lee"
+                     data-testimonial-role="Doctor, Seoul"
+                     data-testimonial-content="I recommend this to my patients dealing with stress. It's a healthy alternative to screen time."
+                     data-testimonial-img="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"></div>
+                
+                <!-- Page 5 (20-24) - Total 25 testimonials -->
+                <div class="testimonials__data" 
+                     data-testimonial-id="20"
+                     data-testimonial-name="Mark Thompson"
+                     data-testimonial-role="Engineer, Sydney"
+                     data-testimonial-content="My creative outlet after a day of technical work. It balances my left and right brain perfectly."
+                     data-testimonial-img="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"></div>
+                
+                <div class="testimonials__data" 
+                     data-testimonial-id="21"
+                     data-testimonial-name="Anna Garcia"
+                     data-testimonial-role="Writer, Mexico City"
+                     data-testimonial-content="This has become part of my writing ritual. It clears my mind before I start writing."
+                     data-testimonial-img="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"></div>
+                
+                <div class="testimonials__data" 
+                     data-testimonial-id="22"
+                     data-testimonial-name="Ben Carter"
+                     data-testimonial-role="Teacher, Vancouver"
+                     data-testimonial-content="I use this with my students. It helps them focus better after a short creative break."
+                     data-testimonial-img="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"></div>
+                
+                <div class="testimonials__data" 
+                     data-testimonial-id="23"
+                     data-testimonial-name="Rachel Green"
+                     data-testimonial-role="Marketing, Los Angeles"
+                     data-testimonial-content="Our team does group sessions. It's improved our creativity and team bonding significantly."
+                     data-testimonial-img="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"></div>
+                
+                <div class="testimonials__data" 
+                     data-testimonial-id="24"
+                     data-testimonial-name="Alex Turner"
+                     data-testimonial-role="Musician, London"
+                     data-testimonial-content="Inspiration comes from disconnecting. This helps me find creative ideas away from screens."
+                     data-testimonial-img="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"></div>
+                
+                <!-- Pagination will be auto-generated based on testimonials__data count -->
+                <div class="testimonials__pagination" id="testimonials-pagination">
+                    <!-- Will be auto-generated -->
+                </div>
+                
+                <div class="testimonials__pagination-info" id="pagination-info">
+                    <!-- Will be auto-generated -->
+                </div>
             </div>
         </div>
-
-        <p class="vanish__disclaimer">
-            Nothing written here is saved or stored. It disappears from this page.
-        </p>
     </section>
 
+    <script>
+        // Configuration
+        const ITEMS_PER_PAGE = 5; // 1 center + 4 around = 5 per page
+        
+        // Get all testimonial data elements
+        const testimonialDataElements = document.querySelectorAll('.testimonials__data');
+        
+        // Calculate total testimonials and pages
+        const TOTAL_TESTIMONIALS = testimonialDataElements.length;
+        const TOTAL_PAGES = Math.ceil(TOTAL_TESTIMONIALS / ITEMS_PER_PAGE);
+        
+        // DOM elements
+        const centerImage = document.getElementById('center-image');
+        const orbitItems = document.querySelectorAll('.testimonials__orbit-item');
+        const paginationContainer = document.getElementById('testimonials-pagination');
+        const paginationInfo = document.getElementById('pagination-info');
+        
+        // Content display elements
+        const quoteElement = document.getElementById('testimonial-quote');
+        const authorElement = document.getElementById('testimonial-author');
+        const roleElement = document.getElementById('testimonial-role');
+        
+        // State
+        let currentPage = 0;
+        let currentTestimonialId = 0;
+        
+        // Initialize everything
+        function initializeTestimonials() {
+            console.log(`Total Testimonials: ${TOTAL_TESTIMONIALS}`);
+            console.log(`Items Per Page: ${ITEMS_PER_PAGE}`);
+            console.log(`Total Pages: ${TOTAL_PAGES}`);
+            
+            // Create pagination dots
+            createPaginationDots();
+            
+            // Initialize first page
+            showPage(0);
+        }
+        
+        // Create pagination dots based on total pages
+        function createPaginationDots() {
+            paginationContainer.innerHTML = '';
+            
+            for (let i = 0; i < TOTAL_PAGES; i++) {
+                const dot = document.createElement('div');
+                dot.className = `testimonials__pagination-dot ${i === 0 ? 'testimonials__pagination-dot--active' : ''}`;
+                dot.setAttribute('data-page', i);
+                dot.addEventListener('click', function() {
+                    const pageNumber = parseInt(this.getAttribute('data-page'));
+                    showPage(pageNumber);
+                });
+                paginationContainer.appendChild(dot);
+            }
+        }
+        
+        // Show a specific page
+        function showPage(pageNumber) {
+            currentPage = pageNumber;
+            
+            // Calculate start and end indices for this page
+            const startIndex = pageNumber * ITEMS_PER_PAGE;
+            const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, TOTAL_TESTIMONIALS);
+            
+            // Hide all orbit items first
+            orbitItems.forEach(item => {
+                item.style.display = 'none';
+            });
+            
+            // Show orbit items for this page
+            let orbitPosition = 0;
+            for (let i = startIndex; i < endIndex; i++) {
+                // Find orbit item for this testimonial ID
+                const orbitItem = document.querySelector(`.testimonials__orbit-item[data-testimonial-id="${i}"]`);
+                
+                if (orbitItem) {
+                    orbitItem.style.display = 'block';
+                    
+                    // Update position class
+                    const positionClass = `testimonials__orbit-item--pos-${orbitPosition + 1}`;
+                    
+                    // Remove all position classes
+                    ['testimonials__orbit-item--pos-1', 'testimonials__orbit-item--pos-2', 
+                     'testimonials__orbit-item--pos-3', 'testimonials__orbit-item--pos-4', 
+                     'testimonials__orbit-item--pos-5'].forEach(cls => {
+                        orbitItem.classList.remove(cls);
+                    });
+                    
+                    // Add new position class
+                    orbitItem.classList.add(positionClass);
+                    
+                    orbitPosition++;
+                }
+            }
+            
+            // Update pagination dots
+            updatePaginationDots();
+            
+            // Activate first testimonial of the page
+            activateTestimonial(startIndex);
+            
+            // Update page info
+            updatePaginationInfo();
+        }
+        
+        // Update pagination dots active state
+        function updatePaginationDots() {
+            const dots = document.querySelectorAll('.testimonials__pagination-dot');
+            dots.forEach((dot, index) => {
+                if (index === currentPage) {
+                    dot.classList.add('testimonials__pagination-dot--active');
+                } else {
+                    dot.classList.remove('testimonials__pagination-dot--active');
+                }
+            });
+        }
+        
+        // Update pagination info text
+        function updatePaginationInfo() {
+            const startItem = currentPage * ITEMS_PER_PAGE + 1;
+            const endItem = Math.min((currentPage + 1) * ITEMS_PER_PAGE, TOTAL_TESTIMONIALS);
+            paginationInfo.textContent = `Showing ${startItem}-${endItem} of ${TOTAL_TESTIMONIALS} testimonials (Page ${currentPage + 1} of ${TOTAL_PAGES})`;
+        }
+        
+        // Activate a testimonial
+        function activateTestimonial(testimonialId) {
+            currentTestimonialId = testimonialId;
+            
+            // Find the testimonial data element
+            const testimonialData = document.querySelector(`.testimonials__data[data-testimonial-id="${testimonialId}"]`);
+            
+            if (!testimonialData) return;
+            
+            // Extract data from attributes
+            const name = testimonialData.getAttribute('data-testimonial-name');
+            const role = testimonialData.getAttribute('data-testimonial-role');
+            const content = testimonialData.getAttribute('data-testimonial-content');
+            const img = testimonialData.getAttribute('data-testimonial-img');
+            
+            // Update display elements (NO HTML APPENDING - just setting content)
+            centerImage.src = img;
+            centerImage.alt = name;
+            quoteElement.textContent = content;
+            authorElement.textContent = name;
+            roleElement.textContent = role;
+            
+            // Update active classes
+            // Update center image active state
+            centerImage.classList.add('testimonials__circle-image--active');
+            
+            // Update orbit items active state
+            orbitItems.forEach(item => {
+                item.classList.remove('testimonials__orbit-item--active');
+            });
+            
+            const activeOrbitItem = document.querySelector(`.testimonials__orbit-item[data-testimonial-id="${testimonialId}"]`);
+            if (activeOrbitItem) {
+                activeOrbitItem.classList.add('testimonials__orbit-item--active');
+            }
+        }
+        
+        // Add click event listeners to orbit items
+        orbitItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const testimonialId = parseInt(this.getAttribute('data-testimonial-id'));
+                activateTestimonial(testimonialId);
+            });
+        });
+        
+        // Add click event listener to center image
+        centerImage.addEventListener('click', function() {
+            activateTestimonial(currentTestimonialId);
+        });
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', initializeTestimonials);
+    </script>
 </body>
 </html>
