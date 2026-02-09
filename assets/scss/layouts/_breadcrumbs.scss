@@ -14,29 +14,27 @@
         min-height: 390px;
     }
 
-    @media (max-width: 768px) {
-        min-height: fit-content;
-    }
-
     &__subtitle-wrap {
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 1.5rem;
-        padding-top: 4.5rem;
+        padding-top: 9rem;
         background: transparent;
 
 
         @media (max-width:576px) {
             gap: 0.8rem;
-
-            .breadcrumbs__shape {
-                display: none;
-            }
         }
 
         @media (max-width:350px) {
             flex-wrap: wrap;
+        }
+    }
+
+    @media (max-width:576px) {
+        &__shape {
+            display: none;
         }
     }
 
@@ -87,11 +85,5 @@
     &__desc {
         color: $white-color;
         text-align: center;
-    }
-
-    &--product-details-page {
-        @media(max-width:768px) {
-            min-height: 400px;
-        }
     }
 }

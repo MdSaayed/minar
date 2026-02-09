@@ -2,11 +2,18 @@
 
     // Global Style
 
-    .header--style-1 {
+    .header {
+        position: relative;
         width: 100%;
-        position: fixed;
+        background: transparent;
+        margin-bottom: -88px;
+        z-index: 100;
+        position: absolute;
         top: 60px;
-        z-index: 20;
+
+        @media(max-width:1021px) {
+            top: 40px;
+        }
 
         .header__container {
             padding-top: 0;
@@ -18,7 +25,8 @@
             align-items: center;
             justify-content: space-between;
             height: 88px;
-            border: 1px solid $white-color;
+            background: rgba(255, 255, 255, 0.01);
+            box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.30) inset, -1px -2px 2px 0 rgba(255, 255, 255, 0.10) inset, 1px 2px 2px 0 rgba(255, 255, 255, 0.30) inset;
             border-radius: 100px;
             padding: 0 4rem;
 
@@ -31,7 +39,10 @@
             }
 
             @media(max-width:576px) {
-                padding: 0;
+                padding: 0 1.5rem;
+                 border-radius: 0;
+                    background: unset;
+                    box-shadow: unset;
             }
 
             &__menu {
@@ -114,8 +125,8 @@
                 }
             }
 
-            .current-menu-item>.nav__link {
-                color: $primary-color;
+            li.nav__item.current-menu-itemn a {
+                color: $primary-color !important;
                 font-weight: 500;
             }
 
@@ -130,7 +141,7 @@
                 }
             }
 
-            .nav__lang {
+            &__lang {
                 position: relative;
                 display: inline-block;
             }
@@ -194,5 +205,28 @@
             visibility: visible;
             transform: translateY(0);
             z-index: 9999;
+        }
+
+        &--style-2 {
+            .nav {
+                &__link {
+                    color: $white-color;
+                }
+
+                &__language {
+                    color: $white-color;
+                    background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.74972 0.749977L4.74986 4.74984L0.75 0.749977' stroke='white' stroke-width='1.49995' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+                }
+
+                &__user-profile-link {
+                    svg path {
+                        fill: $white-color;
+                    }
+                }
+
+                &__toggle path {
+                    fill: $white-color;
+                }
+            }
         }
     }
