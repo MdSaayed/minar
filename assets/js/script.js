@@ -3,9 +3,9 @@
 if (document.querySelector(".card")) {
     const cards = document.querySelectorAll('.card');
     const dotsContainer = document.getElementById('dots');
-    let currentIndex = 3; // Starting with the 4th image (index 3)
+    const totalCards = cards.length;
+    let currentIndex = 3; 
 
-    // Generate Bullets
     function initGallery() {
         dotsContainer.innerHTML = '';
         cards.forEach((_, i) => {
@@ -21,25 +21,30 @@ if (document.querySelector(".card")) {
     function updateMobileGallery(index) {
         if (window.innerWidth > 1024) return;
 
-        currentIndex = index;
+        // --- INFINITE LOOP LOGIC ---
+        // যদি ইনডেক্স শেষ হয়ে যায় তবে শুরুতে ফিরবে, আর শুরুতে থাকলে শেষে যাবে
+        currentIndex = (index + totalCards) % totalCards; 
+        
         const dots = document.querySelectorAll('.dot');
+        const prevIndex = (currentIndex - 1 + totalCards) % totalCards;
+        const nextIndex = (currentIndex + 1) % totalCards;
 
         cards.forEach((card, i) => {
             card.classList.remove('active', 'prev', 'next');
             dots[i].classList.remove('active');
 
-            if (i === index) {
+            if (i === currentIndex) {
                 card.classList.add('active');
                 dots[i].classList.add('active');
-            } else if (i === index - 1) {
+            } else if (i === prevIndex) {
                 card.classList.add('prev');
-            } else if (i === index + 1) {
+            } else if (i === nextIndex) {
                 card.classList.add('next');
             }
         });
     }
 
-    // Drag/Swipe Support for Mobile
+    // Drag/Swipe Support (Updated condition)
     let startX = 0;
     document.getElementById('track').addEventListener('touchstart', (e) => {
         startX = e.touches[0].pageX;
@@ -47,9 +52,11 @@ if (document.querySelector(".card")) {
 
     document.getElementById('track').addEventListener('touchend', (e) => {
         let endX = e.changedTouches[0].pageX;
-        if (startX - endX > 50 && currentIndex < cards.length - 1) {
+        if (startX - endX > 50) { 
+            // Swipe Left -> Next Card
             updateMobileGallery(currentIndex + 1);
-        } else if (startX - endX < -50 && currentIndex > 0) {
+        } else if (startX - endX < -50) { 
+            // Swipe Right -> Prev Card
             updateMobileGallery(currentIndex - 1);
         }
     });
@@ -60,7 +67,6 @@ if (document.querySelector(".card")) {
 
     initGallery();
 }
-
 
 /*============== Product Slider========= */
 if (document.querySelector(".product__slider_1")) {
@@ -108,12 +114,7 @@ if (document.querySelector(".faq__item")) {
     })
 };
 
-
 /*============== Product Card Image Slider========= */
-// ================================================
-// Global variables
-// ================================================
-
 if (document.querySelector(".product--details")) {
     let currentIndex = 0;
 
@@ -178,17 +179,6 @@ if (document.querySelector(".product--details")) {
 
     init();
 
-    // ================================================
-    // Quantity functionality
-    // ================================================
-    let qty = 2;
-    const qtyElement = document.getElementById("qty");
-    if (qtyElement) qtyElement.textContent = qty;
-
-    window.changeQty = function (delta) {
-        qty = Math.max(1, qty + delta);
-        if (qtyElement) qtyElement.textContent = qty;
-    };
 
     // ================================================
     // Drag / Swipe logic
@@ -277,12 +267,35 @@ if (document.querySelector(".product--details")) {
 
 }
 
+// =====================Quantity functionality===================
+document.addEventListener('DOMContentLoaded', () => {
+    const qtyWrappers = document.querySelectorAll('.product__qty-control, .product-card__quantity');
 
+    qtyWrappers.forEach(wrapper => {
+        const qtyElement = wrapper.querySelector('.product__qty-number');
+        const btnIncrement = wrapper.querySelector('.product__qty-btn--increment');
+        const btnDecrement = wrapper.querySelector('.product__qty-btn--decrement');
 
+        if (qtyElement && btnIncrement && btnDecrement) {
+            
+            btnIncrement.addEventListener('click', (e) => {
+                e.preventDefault();
+                let currentQty = parseInt(qtyElement.textContent) || 1;
+                qtyElement.textContent = currentQty + 1;
+            });
 
+            btnDecrement.addEventListener('click', (e) => {
+                e.preventDefault();
+                let currentQty = parseInt(qtyElement.textContent) || 1;
+                if (currentQty > 1) {
+                    qtyElement.textContent = currentQty - 1;
+                }
+            });
+        }
+    });
+});
 
-
-// ================Vanish SUbmit Btn==========================
+// ================Vanish Submit Btn==========================
 if (document.querySelector(".vanish__input")) {
     const input = document.querySelector(".vanish__input");
     const submitBtn = document.querySelector(".vanish__button");
@@ -297,7 +310,6 @@ if (document.querySelector(".vanish__input")) {
         }
     });
 }
-
 
 // ========================Offcanvas==============================
 document.addEventListener('DOMContentLoaded', function () {

@@ -14,6 +14,15 @@
         background: url('../images/hero-bg-shape.png') bottom/cover no-repeat;
     }
 
+        &__container {
+        position: relative;
+        z-index: 10;
+
+        @media(max-width: 450px){
+            padding-top: 40px;
+        }
+    }
+
     &__title {
         font-size: 4.375rem;
         line-height: 1.2;
@@ -23,7 +32,7 @@
         max-width: 1120px;
         margin: 0 auto;
 
-        @media(max-width: 1021px) {
+        @media(max-width: 1024px) {
             font-size: 4rem;
             margin-bottom: 10px;
         }
@@ -35,6 +44,7 @@
     }
 
     &__subtitle-text {
+        font-family: $font-primary;
         font-size: 2rem;
         font-weight: 500;
         line-height: 1.4;
@@ -42,7 +52,8 @@
         text-align: center;
         max-width: 1120px;
         margin: 0 auto;
-        margin-bottom: 1.8rem;
+        margin-bottom: 2.5rem;
+        margin-top: 10px;
 
         @media(max-width: 768px) {
             font-size: 20px;
@@ -66,17 +77,13 @@
         max-width: 645px;
         letter-spacing: 0;
         margin: 0 auto;
-        margin-top: 1.8rem;
+        margin-top: 2rem;
         line-height: 1.4;
+        text-align: center;
 
         @media(max-width: 768px) {
             font-size: 1rem;
         }
-    }
-
-    &__container {
-        position: relative;
-        z-index: 10;
     }
 
     &__btn-wrap {
@@ -91,17 +98,17 @@
     &__gradient-left-bottom {
         width: 450px;
         height: 780px;
-        background: #FF9E3D;
         transform: rotate(-13.94deg);
         position: absolute;
         left: -312px;
         bottom: -200px;
-        filter: blur(120px);
         pointer-events: none;
-        border-radius: 50%;
         z-index: 5;
+        border-radius: 779px;
+        background: rgba(255, 158, 61, 0.80);
+        filter: blur(200px);
 
-        @media(max-width: 1021px) {
+        @media(max-width: 1024px) {
             width: 300px;
             height: 500px;
             left: -200px;
@@ -112,17 +119,17 @@
     &__gradient-right-bottom {
         width: 450px;
         height: 780px;
-        background: #FF9E3D;
         transform: rotate(-160deg);
         position: absolute;
         right: -250px;
         bottom: -200px;
-        filter: blur(200px);
         pointer-events: none;
-        border-radius: 50%;
         z-index: 5;
+        border-radius: 779px;
+        background: rgba(255, 158, 61, 0.80);
+        filter: blur(200px);
 
-        @media(max-width: 1021px) {
+        @media(max-width: 1024px) {
             width: 300px;
             height: 450px;
             right: -100px;
@@ -138,7 +145,7 @@
         }
     }
 
-    @media (max-width: 1021px) {
+    @media (max-width: 1024px) {
         padding-top: 9.875rem;
     }
 

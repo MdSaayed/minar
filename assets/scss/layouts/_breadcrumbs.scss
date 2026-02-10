@@ -4,12 +4,6 @@
     background: url('../images/breadcrumbs-bg.png') center/cover no-repeat, $black-color;
     min-height: 535px;
 
-    &--mission-page {
-        .breadcrumbs__container {
-            padding-bottom: 0;
-        }
-    }
-
     @media (max-width: 1150px) {
         min-height: 390px;
     }
@@ -70,7 +64,7 @@
         margin-top: 4rem;
         margin-bottom: 1.5rem;
 
-        @media (max-width: 1021px) {
+        @media (max-width: 1024px) {
             margin-top: 3rem;
             margin-bottom: 20px;
             font-size: 2.5rem;

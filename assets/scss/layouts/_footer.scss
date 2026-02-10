@@ -57,6 +57,7 @@
             font-weight: 500;
             line-height: 1.4;
             letter-spacing: 0;
+            text-align: center;
         }
     }
 
@@ -173,7 +174,7 @@
     }
 
     &__link-item--contact {
-        max-width: 315px;
+        max-width: 350px;
 
         li a {
             display: flex;
@@ -246,7 +247,7 @@
             bottom: -100px;
         }
 
-        @media (max-width:1021px) {
+        @media (max-width:1024px) {
             font-size: 10rem;
             bottom: -80px;
         }

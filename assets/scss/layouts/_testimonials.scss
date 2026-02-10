@@ -1,8 +1,23 @@
 @use '../utils/variables' as *;
 
 .testimonials {
-
     background: $light-orange-color;
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: -360px;
+        right: -380px;
+        width: 423.111px;
+        height: 669.413px;
+        border-radius: 669.413px;
+        background: rgba(255, 158, 61, 0.7);
+        -webkit-transform: rotate(1deg);
+        transform: rotate(-151deg);
+        -webkit-filter: blur(200px);
+        filter: blur(200px);
+    }
 
     &__header {
         margin-bottom: 4.5rem;
@@ -24,13 +39,12 @@
         margin-top: 4.5rem;
         gap: 8rem;
 
-        @media(max-width:1021px) {
-            gap: 6rem;
+        @media(max-width:1024px) {
+            gap: 4rem;
         }
 
         @media(max-width:800px) {
             grid-template-columns: 1fr;
-            gap: 4rem;
         }
     }
 
@@ -55,6 +69,10 @@
         @media (max-width:768px) {
             margin-left: 0;
         }
+
+        @media (max-width:576px) {
+            min-height: 272px;
+        }
     }
 
     &__author-img {
@@ -74,6 +92,13 @@
             height: 100%;
             width: 100%;
             object-fit: cover;
+
+            @media(max-width:576px) {
+                bottom: 0;
+                transform: translateY(0);
+                max-width: 130px;
+                max-height: 130px;
+            }
         }
 
         &:nth-child(2) {
@@ -120,6 +145,20 @@
             right: 55%;
             bottom: 58px;
 
+            @media (max-width:1200px) {
+                right: 63%;
+                bottom: 65px;
+            }
+
+            @media (max-width:924px) {
+                right: 77%;
+                bottom: 65px;
+            }
+
+            @media(max-width:800px) {
+                right: 63%;
+            }
+
             @media (max-width:576px) {
                 display: none;
             }
@@ -134,6 +173,7 @@
 
         @media (max-width:768px) {
             flex-direction: row;
+            gap: 22px;
         }
 
         &-dot {
@@ -156,6 +196,7 @@
         @media(max-width:768px) {
             padding-left: 80px;
         }
+
         @media(max-width:576px) {
             padding-left: 70px;
         }

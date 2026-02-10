@@ -2,6 +2,15 @@
 
 .mission {
     position: relative;
+    margin-top: -200px;
+
+    @media(max-width:1150px) {
+        margin-top: -100px;
+    }
+
+    @media(max-width:576px) {
+        margin-top: 0px;
+    }
 
     &::after {
         content: "";
@@ -44,21 +53,25 @@
 
     &__bottom {
         background: url('../images/combo-bg.png') bottom/cover no-repeat, $light-orange-color;
-        border-radius: 80px 80px 0 0; 
+        border-radius: 80px 80px 0 0;
         margin-top: -230px;
         position: relative;
 
         @media (max-width: 1150px) {
-            margin-top: -130px;
+            margin-top: -80px;
         }
 
-        @media (max-width:1021px) {
+        @media (max-width:1024px) {
             border-radius: 60px 60px 0 0;
         }
 
         @media (max-width:576px) {
             border-radius: 30px 30px 0 0;
-             margin-top: -85px;
+            margin-top: -85px;
+        }
+
+        @media (max-width:500px) {
+            margin-top: -35px;
         }
 
         &-container {
@@ -99,7 +112,7 @@
             justify-content: end;
             margin-top: 4.5rem;
 
-            @media(max-width: 1021px) {
+            @media(max-width: 1024px) {
                 margin-top: 4rem;
             }
 
@@ -118,6 +131,10 @@
         @media (max-width:576px) {
             width: 100%;
             height: 500px;
+        }
+
+        @media (max-width:430px) {
+            height: 378px; 
         }
     }
 
@@ -188,10 +205,22 @@
     &__subtitle-text {
         font-size: 2.2rem;
         max-width: 100%;
+
+        @media(max-width:1024px) {
+            font-size: 2rem;
+        }
+
+        @media(max-width:576px) {
+            font-size: 20px;
+        }
     }
 
     &__text {
         margin-bottom: 1.5rem;
+
+        @media(max-width:576px) {
+            font-size: 1rem;
+        }
     }
 
     &__text-limit {
@@ -205,7 +234,7 @@
         max-width: 90%;
         z-index: -1;
 
-        @media (max-width:1021px) {
+        @media (max-width:1024px) {
             max-width: 700px;
             top: 50px;
             left: 0px;
