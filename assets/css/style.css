@@ -1988,10 +1988,6 @@ p {
 .why-choose-us__btn {
   padding: 12px 56px;
 }
-.why-choose-us .rotate-img {
-  -webkit-animation: spin 10s linear infinite;
-          animation: spin 10s linear infinite;
-}
 .why-choose-us__orbit-area {
   width: 745px;
   height: 745px;
@@ -2102,6 +2098,12 @@ p {
           animation: rotate360 30s linear infinite;
   z-index: 30;
 }
+@media (max-width: 800px) {
+  .why-choose-us .orbit__rotating {
+    -webkit-animation: rotate360 40s linear infinite;
+            animation: rotate360 40s linear infinite;
+  }
+}
 @media (max-width: 576px) {
   .why-choose-us .orbit__rotating {
     -webkit-animation: unset;
@@ -2125,6 +2127,13 @@ p {
   -webkit-animation: counterRotate 30s linear infinite;
           animation: counterRotate 30s linear infinite;
   z-index: 20;
+}
+@media (max-width: 800px) {
+  .why-choose-us .orbit__text-box {
+    max-width: 200px;
+    -webkit-animation: counterRotate 40s linear infinite;
+            animation: counterRotate 40s linear infinite;
+  }
 }
 @media (max-width: 576px) {
   .why-choose-us .orbit__text-box {

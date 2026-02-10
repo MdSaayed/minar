@@ -103,7 +103,6 @@
         }
     }
 
-
     &__btn-wrap {
         display: flex;
         justify-content: center;
@@ -114,10 +113,6 @@
 
     &__btn {
         padding: 12px 56px;
-    }
-
-    .rotate-img {
-        animation: spin 10s linear infinite;
     }
 
     &__orbit-area {
@@ -214,6 +209,10 @@
             animation: rotate360 30s linear infinite;
             z-index: 30;
 
+            @media(max-width:800px) {
+                 animation: rotate360 40s linear infinite;
+            }
+
             @media(max-width:576px) {
                 animation: unset;
             }
@@ -235,7 +234,10 @@
             animation: counterRotate 30s linear infinite;
             z-index: 20;
 
-
+            @media(max-width:800px) {
+                max-width: 200px;
+                animation: counterRotate 40s linear infinite;
+            }
 
             @media(max-width:576px) {
                 max-width: 178px;
