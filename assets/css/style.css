@@ -2078,6 +2078,7 @@ p {
   .why-choose-us__orbit-area {
     width: 450px;
     height: 450px;
+    margin-top: 2rem;
   }
 }
 @media (max-width: 550px) {
