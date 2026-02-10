@@ -90,13 +90,6 @@
         }
     }
 
-    &__orbit-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        animation: spin 25s linear infinite;
-    }
-
     &__orbit-book {
         position: absolute;
         top: 50%;
@@ -130,6 +123,7 @@
         display: flex;
         justify-content: center;
         position: relative;
+        margin-top: 6rem;
         z-index: 10;
     }
 
@@ -141,7 +135,146 @@
         animation: spin 10s linear infinite;
     }
 
-    @keyframes spin {
+    &__orbit-area {
+        width: 745px;
+        height: 745px;
+        position: relative;
+        margin: 0 auto;
+        margin-top: 6rem;
+
+        @media(max-width:1024px) {
+            width: 650px;
+            height: 650px;
+        }
+
+        @media(max-width:900px) {
+            width: 550px;
+            height: 550px;
+        }
+
+        @media(max-width:800px) {
+            width: 493px;
+            height: 493px;
+            margin-top: 4rem;
+        }
+
+        @media(max-width:780px) {
+            width: 400px;
+            height: 400px;
+        }
+    }
+
+    &__book {
+        position: absolute;
+        width: 745px;
+        height: 745px;
+        width: 100%;
+        z-index: 10; 
+
+        @media(max-width:1024px) {
+            width: 650px;
+            height: 650px;
+        }
+
+        @media(max-width:900px) {
+            width: 550px;
+            height: 550px;
+        }
+
+        @media(max-width:800px) {
+            width: 493px;
+            height: 493px;
+        }
+
+        @media(max-width:780px) {
+            width: 400px;
+            height: 400px;
+        }
+    }
+
+    .rotating-orbit {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        transform-origin: center center;
+        animation: rotate360 30s linear infinite;
+        z-index: 30;
+    }
+
+    .orbit__text-box {
+        position: absolute;
+        background: linear-gradient(to right, #f39c12, #e67e22);
+        color: white;
+        padding: 10px 15px;
+        border-radius: 8px;
+        font-size: 12px;
+        width: fit-content;
+        max-width: 250px;
+        box-shadow:
+            0 15px 35px rgba(230, 126, 34, 0.4),
+            inset 0 2px 5px rgba(255, 255, 255, 0.5),
+            inset 0 -3px 2px rgba(0, 0, 0, 0.1);
+        animation: counterRotate 30s linear infinite;
+        z-index: 20;
+
+        @media(max-width:576px){
+            max-width: 178px;
+        }
+    }
+
+    .orbit__text-box-title {
+        color: $black-color;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        display: block;
+        display: block;
+    }
+
+    .orbit__text-box-text {
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 1.1;
+        color: $black-color;
+        display: block;
+    }
+
+    .orbit__text-box--1 {
+        top: 0%;
+        left: 15%;
+        transform: translate(-50%, 59%);
+    }
+
+    .orbit__text-box--2 {
+        top: 25%;
+        right: -10%;
+    }
+
+    .orbit__text-box--3 {
+        bottom: 25%;
+        right: -10%;
+    }
+
+    .orbit__text-box--4 {
+        bottom: 0%;
+        left: 45%;
+        transform: translate(-50%, 50%);
+    }
+
+    .orbit__text-box--5 {
+        bottom: 25%;
+        left: -10%;
+    }
+
+    .orbit__text-box--6 {
+        top: 25%;
+        left: -10%;
+    }
+
+    @keyframes rotate360 {
         from {
             transform: rotate(0deg);
         }
@@ -151,4 +284,13 @@
         }
     }
 
+    @keyframes counterRotate {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(-360deg);
+        }
+    }
 }

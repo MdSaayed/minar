@@ -154,7 +154,7 @@
     }
 
     &__displaying-img {
-        outline: 1px solid $primary-color;
+        outline: 3px solid $primary-color;
     }
 
     &__pagination {
@@ -168,12 +168,20 @@
             content: "";
             position: absolute;
             width: 4px;
-            height: 100% + 20px;
+            height: calc(100% + 20px);
             top: 50%;
             left: 50%;
             background: linear-gradient(90deg, rgba(255, 192, 129, 0.00) 0%, #FFC081 50%, rgba(255, 192, 129, 0.00) 100%);
             transform: translate(-50%, -50%);
             z-index: 9;
+
+
+            @media (max-width:768px) {
+                &::after {
+                    width: calc(100% + 20px);
+                    height: 4px; 
+                }
+            }
         }
 
         @media (max-width:768px) {
@@ -181,9 +189,9 @@
             gap: 22px;
 
             &::after {
+                width: calc(100% + 20px);
                 height: 4px;
             }
-
         }
 
         &-dot {
@@ -194,6 +202,11 @@
             cursor: pointer;
             position: relative;
             z-index: 10;
+
+              @media (max-width:768px) {
+                width: 12px;
+                height: 12px;
+              }
 
             &--active {
                 background: $primary-color;
