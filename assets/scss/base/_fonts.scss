@@ -1,7 +1,7 @@
 /* 400 */
 @font-face {
   font-family: 'Helvetica Now Display';
-  src: url('../../assets/fonts/Helvetica/HelveticaNowDisplay-Regular.woff2') format('woff2');
+  src: url('../fonts/Helvetica/HelveticaNowDisplay-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -10,7 +10,7 @@
 /* 400 italic */
 @font-face {
   font-family: 'Helvetica Now Display';
-  src: url('../../assets/fonts/Helvetica/HelveticaNowDisplay-RegularItalic.woff2') format('woff2');
+  src: url('../fonts/Helvetica/HelveticaNowDisplay-RegularItalic.ttf') format('truetype');
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -19,7 +19,7 @@
 /* 500 */
 @font-face {
   font-family: 'Helvetica Now Display';
-  src: url('../../assets/fonts/Helvetica/HelveticaNowDisplay-Medium.woff2') format('woff2');
+  src: url('../fonts/Helvetica/HelveticaNowDisplay-Medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -28,7 +28,7 @@
 /* 600 */
 @font-face {
   font-family: 'Helvetica Now Display';
-  src: url('../../assets/fonts/HelveticaNowDisplay-Semibold.woff2') format('woff2');
+  src: url('../fonts/Helvetica/HelveticaNowDisplay-Semibold.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -37,7 +37,7 @@
 /* 700 */
 @font-face {
   font-family: 'Helvetica Now Display';
-  src: url('../../assets/fonts/HelveticaNowDisplay-Bold.woff2') format('woff2');
+  src: url('../fonts/Helvetica/HelveticaNowDisplay-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -46,7 +46,7 @@
 /* 800 */
 @font-face {
   font-family: 'Helvetica Now Display';
-  src: url('../../assets/fonts/Helvetica/HelveticaNowDisplay-Extrabold.woff2') format('woff2');
+  src: url('../fonts/Helvetica/HelveticaNowDisplay-Extrabold.ttf') format('truetype');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
@@ -55,18 +55,17 @@
 /* 900 */
 @font-face {
   font-family: 'Helvetica Now Display';
-  src: url('../../assets/fonts/Helvetica/HelveticaNowDisplay-Black.woff2') format('woff2');
+  src: url('../fonts/Helvetica/HelveticaNowDisplay-Black.ttf') format('truetype');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
 
-// Salsa 
+/* Salsa */
 @font-face {
   font-family: 'Salsa';
-  src: url('.../../assets/fonts/Salsa/Salsa-Regular.ttf') format('truetype');
-  font-weight: 400; // the real weight you have
+  src: url('../fonts/Salsa/Salsa-Regular.ttf') format('truetype');
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
- 
