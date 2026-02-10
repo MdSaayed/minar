@@ -389,3 +389,201 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+// ======================Testimonials===========================
+// document.addEventListener("DOMContentLoaded", function () {
+
+//   const imgWrap = document.querySelector(".testimonials__img-wrap");
+//   if (!imgWrap) return;
+
+//   const images = imgWrap.querySelectorAll(".testimonials__author-img");
+//   const textEl = document.querySelector(".testimonials__text");
+//   const nameEl = document.querySelector(".testimonials__author-name");
+//   const pagination = document.querySelector(".testimonials__pagination");
+
+//   const totalItems = parseInt(imgWrap.dataset.item);
+//   const showItems = parseInt(imgWrap.dataset.show);
+
+//   // -------- create pagination ----------
+//   const totalDots = Math.ceil(totalItems / showItems);
+//   pagination.innerHTML = "";
+
+//   for (let i = 0; i < totalDots; i++) {
+//     const dot = document.createElement("span");
+//     dot.className = "testimonials__pagination-dot";
+//     if (i === 0) dot.classList.add("testimonials__pagination-dot--active");
+//     pagination.appendChild(dot);
+//   }
+
+//   const dots = pagination.querySelectorAll(".testimonials__pagination-dot");
+
+//   // -------- show images by page ----------
+// function showItemsByDot(dotIndex) {
+//   const start = dotIndex * showItems;
+//   const end = start + showItems;
+
+//   // remove active classes from all images
+//   images.forEach(img => {
+//     img.style.display = "none";
+//     img.classList.remove("testimonials__author-img--active");
+//     for (let i = 1; i <= showItems; i++) {
+//       img.classList.remove(`testimonials__author-img--${i}`);
+//     }
+//   });
+
+//   // show items for this page and assign per-page index
+//   let pageIndex = 1;
+//   let firstActiveImg = null;
+
+//   for (let i = start; i < end && i < images.length; i++) {
+//     const img = images[i];
+//     img.style.display = "block";
+
+//     img.dataset.index = pageIndex; // per-page index
+//     img.classList.add("testimonials__author-img--active");
+//     img.classList.add(`testimonials__author-img--${pageIndex}`);
+
+//     if (!firstActiveImg) firstActiveImg = img; // store first visible image
+//     pageIndex++;
+//   }
+
+//   // update testimonial text & name to first active image
+//   if (firstActiveImg) {
+//     textEl.textContent = firstActiveImg.dataset.content;
+//     nameEl.textContent = firstActiveImg.dataset.authorName;
+//   }
+
+//   // update dots
+//   dots.forEach(d => d.classList.remove("testimonials__pagination-dot--active"));
+//   dots[dotIndex].classList.add("testimonials__pagination-dot--active");
+// }
+
+//   // first load → only first page visible
+//   showItemsByDot(0);
+
+//   // -------- dot click ----------
+//   dots.forEach((dot, index) => {
+//     dot.addEventListener("click", () => showItemsByDot(index));
+//   });
+
+//   // -------- image click ----------
+//   images.forEach((img, index) => {
+//     img.addEventListener("click", () => {
+//       textEl.textContent = img.dataset.content;
+//       nameEl.textContent = img.dataset.authorName;
+//     });
+//   });
+
+// });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const imgWrap = document.querySelector(".testimonials__img-wrap");
+  if (!imgWrap) return;
+
+  const images = imgWrap.querySelectorAll(".testimonials__author-img");
+  const textEl = document.querySelector(".testimonials__text");
+  const nameEl = document.querySelector(".testimonials__author-name");
+  const pagination = document.querySelector(".testimonials__pagination");
+
+  const totalItems = parseInt(imgWrap.dataset.item);
+  const defaultShow = parseInt(imgWrap.dataset.show) || 3;
+  const responsiveShow = parseInt(imgWrap.dataset.showResponsive) || defaultShow;
+
+  let showItems = defaultShow;
+  let currentDotIndex = 0;
+
+  // ---------- create pagination ----------
+  function createPagination() {
+    pagination.innerHTML = "";
+    const totalDots = Math.ceil(totalItems / showItems);
+
+    for (let i = 0; i < totalDots; i++) {
+      const dot = document.createElement("span");
+      dot.className = "testimonials__pagination-dot";
+      if (i === currentDotIndex) dot.classList.add("testimonials__pagination-dot--active");
+      pagination.appendChild(dot);
+
+      dot.addEventListener("click", () => {
+        currentDotIndex = i;
+        showItemsByDot(i);
+      });
+    }
+  }
+
+  // ---------- show images by dot ----------
+  function showItemsByDot(dotIndex) {
+    const start = dotIndex * showItems;
+    const end = start + showItems;
+
+    let pageIndex = 1;
+    let firstActiveImg = null;
+
+    images.forEach((img, i) => {
+      img.style.display = "none";
+      img.classList.remove("testimonials__author-img--active", "testimonials__displaying-img");
+
+      for (let j = 1; j <= showItems; j++) {
+        img.classList.remove(`testimonials__author-img--${j}`);
+      }
+
+      if (i >= start && i < end) {
+        img.style.display = "block";
+        img.dataset.index = pageIndex;
+        img.classList.add("testimonials__author-img--active", `testimonials__author-img--${pageIndex}`);
+
+        if (!firstActiveImg) firstActiveImg = img;
+        pageIndex++;
+      }
+    });
+
+    // update testimonial text & name to first visible image
+    if (firstActiveImg) {
+      textEl.textContent = firstActiveImg.dataset.content;
+      nameEl.textContent = firstActiveImg.dataset.authorName;
+      firstActiveImg.classList.add("testimonials__displaying-img");
+    }
+
+    // update dots
+    const dots = pagination.querySelectorAll(".testimonials__pagination-dot");
+    dots.forEach(d => d.classList.remove("testimonials__pagination-dot--active"));
+    if (dots[dotIndex]) dots[dotIndex].classList.add("testimonials__pagination-dot--active");
+  }
+
+  // ---------- image click ----------
+  images.forEach(img => {
+    img.addEventListener("click", () => {
+      images.forEach(i => i.classList.remove("testimonials__displaying-img"));
+      img.classList.add("testimonials__displaying-img");
+
+      textEl.textContent = img.dataset.content;
+      nameEl.textContent = img.dataset.authorName;
+    });
+  });
+
+  // ---------- handle responsive ----------
+  function updateShowItems() {
+    const newShow = window.innerWidth < 576 ? responsiveShow : defaultShow;
+
+    if (newShow !== showItems) {
+      showItems = newShow;
+
+      // recalc current dot index to avoid overflow
+      const totalDots = Math.ceil(totalItems / showItems);
+      if (currentDotIndex >= totalDots) currentDotIndex = totalDots - 1;
+
+      createPagination();
+      showItemsByDot(currentDotIndex);
+    }
+  }
+
+  // ---------- initial load ----------
+  updateShowItems();
+  createPagination();
+  showItemsByDot(currentDotIndex);
+
+  // ---------- resize ----------
+  window.addEventListener("resize", updateShowItems);
+
+});
