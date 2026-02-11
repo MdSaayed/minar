@@ -43,7 +43,7 @@
             }
 
             @media(max-width:576px) {
-                padding: 0 1.5rem;
+                padding: 0;
                 border-radius: 0;
                 background: unset;
                 box-shadow: unset;
@@ -146,8 +146,9 @@
             }
 
             &__lang {
-                display: inline-block;
+                display: block;
                 position: relative;
+                width: 66px;
 
                 &::after {
                     content: "";
@@ -162,14 +163,19 @@
                     background-repeat: no-repeat !important;
                     background-position: right 12px center;
                     background-size: 12px;
+
+                    @media (max-width: 768px) {
+                        display: none;
+                    }
+
                 }
             }
 
             &__language {
+                width: 100%;
                 background-color: transparent;
                 color: $black-color;
                 border: none;
-                padding: 0px 20px 0px 0px;
                 margin-right: -15px;
                 font-size: 18px;
                 font-family: 'Arial', sans-serif;
@@ -181,7 +187,7 @@
                 -webkit-appearance: none;
                 -moz-appearance: none;
                 font-family: $font-secondary;
-
+                position: relative;
 
                 &:focus {
                     border: none;
@@ -252,10 +258,8 @@
                 &__language {
                     font-size: 18px;
                     appearance: none;
-                    padding: 0px 20px 0px 0px;
                     -webkit-appearance: none;
                     -moz-appearance: none;
-                    margin-right: -15px;
                     background: transparent;
                     color: $white-color;
                 }

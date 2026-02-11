@@ -247,7 +247,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (elementExists(['mission--style-one'])) {
-        fadeAnimation('fade-in', ['mission__bottom', 'mission__title', 'mission__subtitle-text', 'mission__text'], {
+        fadeAnimation('fade-in', ['mission__bottom', 'mission__title', 'mission__subtitle-text', 'mission__text--left','mission__text-limit'], {
             delay: 0.3,
             duration: 0.7,
             easing: 'ease-out'
