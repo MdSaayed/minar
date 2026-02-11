@@ -146,7 +146,6 @@
             }
 
             &__lang {
-                position: relative;
                 display: inline-block;
                 position: relative;
 
@@ -160,7 +159,7 @@
                     -webkit-transform: translate(-50%, -50%);
                     transform: translate(12px, 0px);
                     background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.74972 0.749977L4.74986 4.74984L0.75 0.749977' stroke='black' stroke-width='1.49995' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-                    background-repeat: no-repeat;
+                    background-repeat: no-repeat !important;
                     background-position: right 12px center;
                     background-size: 12px;
                 }
@@ -170,8 +169,8 @@
                 background-color: transparent;
                 color: $black-color;
                 border: none;
-                padding: 0px 30px 0px 0px;
-                margin-right: -8px;
+                padding: 0px 20px 0px 0px;
+                margin-right: -15px;
                 font-size: 18px;
                 font-family: 'Arial', sans-serif;
                 font-weight: 400;
@@ -230,9 +229,39 @@
                     color: $white-color;
                 }
 
+                &__lang {
+                    position: relative;
+                    display: inline-block;
+
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        right: 0;
+                        top: 28%;
+                        -webkit-transform: translate(-50%, -50%);
+                        transform: translate(12px, 0px);
+                        height: 12px;
+                        pointer-events: none;
+                        background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.74972 0.749977L4.74986 4.74984L0.75 0.749977' stroke='white' stroke-width='1.49995' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+                        background-repeat: no-repeat;
+                        background-position: right 12px center;
+                        background-size: 12px;
+                    }
+                }
+
                 &__language {
+                    font-size: 18px;
+                    appearance: none;
+                    padding: 0px 20px 0px 0px;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    margin-right: -15px;
+                    background: transparent;
                     color: $white-color;
-                    background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.74972 0.749977L4.74986 4.74984L0.75 0.749977' stroke='white' stroke-width='1.49995' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+                }
+
+                &__language option {
+                    color: $black-color;
                 }
 
                 &__user-profile-link {
