@@ -3600,8 +3600,23 @@ p {
   min-height: 100vh;
   /* 5. The Vanish Button */
 }
+.vanish__container {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-height: 100vh;
+}
 .vanish__content {
-  margin-top: 9.5rem;
+  padding: 9rem 0;
+  position: relative;
+  width: 100%;
 }
 .vanish__title {
   color: #000000;
@@ -3724,7 +3739,7 @@ p {
           justify-content: flex-end;
   margin-top: 20px;
 }
-.vanish__button {
+.vanish__submit-button {
   background: #FF8000;
   padding: 5px 28px;
   border-radius: 20px;
@@ -3736,12 +3751,12 @@ p {
   transition: all 0.3s ease;
   border: none;
 }
-.vanish__button:hover {
+.vanish__submit-button:hover {
   background: #FF8000;
   -webkit-transform: translateY(-1px);
           transform: translateY(-1px);
 }
-.vanish__button.disabled {
+.vanish__submit-button.disabled {
   opacity: 0.5;
   pointer-events: none;
 }
@@ -3753,4 +3768,123 @@ p {
   margin-top: 1rem;
   text-align: center;
   font-family: "Helvetica Now Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.vanish__final-btns {
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1.5rem;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 2s ease, visibility 2s ease, -webkit-transform 2s ease;
+  transition: opacity 2s ease, visibility 2s ease, -webkit-transform 2s ease;
+  transition: opacity 2s ease, visibility 2s ease, transform 2s ease;
+  transition: opacity 2s ease, visibility 2s ease, transform 2s ease, -webkit-transform 2s ease;
+}
+.vanish__final-btns.show {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: translateX(-50%) translateY(10px);
+          transform: translateX(-50%) translateY(10px);
+}
+@media (max-width: 576px) {
+  .vanish__final-btns {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 10px;
+    top: 105%;
+  }
+}
+.vanish__btn-clam {
+  border: none !important;
+  outline: none !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+.vanish__btn-soft {
+  background: #ffffff;
+  border: none !important;
+  outline: none !important;
+}
+.vanish .fade-in {
+  -webkit-animation: smoothFadeIn 2.5s forwards cubic-bezier(0.4, 0, 0.2, 1);
+          animation: smoothFadeIn 2.5s forwards cubic-bezier(0.4, 0, 0.2, 1);
+}
+.vanish .fade-out {
+  -webkit-animation: smoothFadeOut 1.8s forwards cubic-bezier(0.4, 0, 0.2, 1);
+          animation: smoothFadeOut 1.8s forwards cubic-bezier(0.4, 0, 0.2, 1);
+}
+@-webkit-keyframes smoothFadeIn {
+  0% {
+    opacity: 0;
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
+    -webkit-transform: translateY(10px);
+            transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-filter: blur(0);
+            filter: blur(0);
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+@keyframes smoothFadeIn {
+  0% {
+    opacity: 0;
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
+    -webkit-transform: translateY(10px);
+            transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-filter: blur(0);
+            filter: blur(0);
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+@-webkit-keyframes smoothFadeOut {
+  0% {
+    opacity: 1;
+    -webkit-filter: blur(0);
+            filter: blur(0);
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+  }
+}
+@keyframes smoothFadeOut {
+  0% {
+    opacity: 1;
+    -webkit-filter: blur(0);
+            filter: blur(0);
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+  }
 }
