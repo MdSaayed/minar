@@ -1,10 +1,11 @@
+"use strict";
 
 /*============== Hero Slider========= */
 if (document.querySelector(".card")) {
     const cards = document.querySelectorAll('.card');
     const dotsContainer = document.getElementById('dots');
     const totalCards = cards.length;
-    let currentIndex = 3; 
+    let currentIndex = 3;
 
     function initGallery() {
         dotsContainer.innerHTML = '';
@@ -23,8 +24,8 @@ if (document.querySelector(".card")) {
 
         // --- INFINITE LOOP LOGIC ---
         // যদি ইনডেক্স শেষ হয়ে যায় তবে শুরুতে ফিরবে, আর শুরুতে থাকলে শেষে যাবে
-        currentIndex = (index + totalCards) % totalCards; 
-        
+        currentIndex = (index + totalCards) % totalCards;
+
         const dots = document.querySelectorAll('.dot');
         const prevIndex = (currentIndex - 1 + totalCards) % totalCards;
         const nextIndex = (currentIndex + 1) % totalCards;
@@ -52,10 +53,10 @@ if (document.querySelector(".card")) {
 
     document.getElementById('track').addEventListener('touchend', (e) => {
         let endX = e.changedTouches[0].pageX;
-        if (startX - endX > 50) { 
+        if (startX - endX > 50) {
             // Swipe Left -> Next Card
             updateMobileGallery(currentIndex + 1);
-        } else if (startX - endX < -50) { 
+        } else if (startX - endX < -50) {
             // Swipe Right -> Prev Card
             updateMobileGallery(currentIndex - 1);
         }
@@ -277,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const btnDecrement = wrapper.querySelector('.product__qty-btn--decrement');
 
         if (qtyElement && btnIncrement && btnDecrement) {
-            
+
             btnIncrement.addEventListener('click', (e) => {
                 e.preventDefault();
                 let currentQty = parseInt(qtyElement.textContent) || 1;
@@ -394,111 +395,111 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener("DOMContentLoaded", function () {
 
-  const imgWrap = document.querySelector(".testimonials__img-wrap");
-  if (!imgWrap) return;
+    const imgWrap = document.querySelector(".testimonials__img-wrap");
+    if (!imgWrap) return;
 
-  const images = imgWrap.querySelectorAll(".testimonials__author-img");
-  const textEl = document.querySelector(".testimonials__text");
-  const nameEl = document.querySelector(".testimonials__author-name");
-  const pagination = document.querySelector(".testimonials__pagination");
+    const images = imgWrap.querySelectorAll(".testimonials__author-img");
+    const textEl = document.querySelector(".testimonials__text");
+    const nameEl = document.querySelector(".testimonials__author-name");
+    const pagination = document.querySelector(".testimonials__pagination");
 
-  const totalItems = parseInt(imgWrap.dataset.item);
-  const defaultShow = parseInt(imgWrap.dataset.show) || 3;
-  const responsiveShow = parseInt(imgWrap.dataset.showResponsive) || defaultShow;
+    const totalItems = parseInt(imgWrap.dataset.item);
+    const defaultShow = parseInt(imgWrap.dataset.show) || 3;
+    const responsiveShow = parseInt(imgWrap.dataset.showResponsive) || defaultShow;
 
-  let showItems = defaultShow;
-  let currentDotIndex = 0;
+    let showItems = defaultShow;
+    let currentDotIndex = 0;
 
-  // ---------- create pagination ----------
-  function createPagination() {
-    pagination.innerHTML = "";
-    const totalDots = Math.ceil(totalItems / showItems);
+    // ---------- create pagination ----------
+    function createPagination() {
+        pagination.innerHTML = "";
+        const totalDots = Math.ceil(totalItems / showItems);
 
-    for (let i = 0; i < totalDots; i++) {
-      const dot = document.createElement("span");
-      dot.className = "testimonials__pagination-dot";
-      if (i === currentDotIndex) dot.classList.add("testimonials__pagination-dot--active");
-      pagination.appendChild(dot);
+        for (let i = 0; i < totalDots; i++) {
+            const dot = document.createElement("span");
+            dot.className = "testimonials__pagination-dot";
+            if (i === currentDotIndex) dot.classList.add("testimonials__pagination-dot--active");
+            pagination.appendChild(dot);
 
-      dot.addEventListener("click", () => {
-        currentDotIndex = i;
-        showItemsByDot(i);
-      });
+            dot.addEventListener("click", () => {
+                currentDotIndex = i;
+                showItemsByDot(i);
+            });
+        }
     }
-  }
 
-  // ---------- show images by dot ----------
-  function showItemsByDot(dotIndex) {
-    const start = dotIndex * showItems;
-    const end = start + showItems;
+    // ---------- show images by dot ----------
+    function showItemsByDot(dotIndex) {
+        const start = dotIndex * showItems;
+        const end = start + showItems;
 
-    let pageIndex = 1;
-    let firstActiveImg = null;
+        let pageIndex = 1;
+        let firstActiveImg = null;
 
-    images.forEach((img, i) => {
-      img.style.display = "none";
-      img.classList.remove("testimonials__author-img--active", "testimonials__displaying-img");
+        images.forEach((img, i) => {
+            img.style.display = "none";
+            img.classList.remove("testimonials__author-img--active", "testimonials__displaying-img");
 
-      for (let j = 1; j <= showItems; j++) {
-        img.classList.remove(`testimonials__author-img--${j}`);
-      }
+            for (let j = 1; j <= showItems; j++) {
+                img.classList.remove(`testimonials__author-img--${j}`);
+            }
 
-      if (i >= start && i < end) {
-        img.style.display = "block";
-        img.dataset.index = pageIndex;
-        img.classList.add("testimonials__author-img--active", `testimonials__author-img--${pageIndex}`);
+            if (i >= start && i < end) {
+                img.style.display = "block";
+                img.dataset.index = pageIndex;
+                img.classList.add("testimonials__author-img--active", `testimonials__author-img--${pageIndex}`);
 
-        if (!firstActiveImg) firstActiveImg = img;
-        pageIndex++;
-      }
+                if (!firstActiveImg) firstActiveImg = img;
+                pageIndex++;
+            }
+        });
+
+        // update testimonial text & name to first visible image
+        if (firstActiveImg) {
+            textEl.textContent = firstActiveImg.dataset.content;
+            nameEl.textContent = firstActiveImg.dataset.authorName;
+            firstActiveImg.classList.add("testimonials__displaying-img");
+        }
+
+        // update dots
+        const dots = pagination.querySelectorAll(".testimonials__pagination-dot");
+        dots.forEach(d => d.classList.remove("testimonials__pagination-dot--active"));
+        if (dots[dotIndex]) dots[dotIndex].classList.add("testimonials__pagination-dot--active");
+    }
+
+    // ---------- image click ----------
+    images.forEach(img => {
+        img.addEventListener("click", () => {
+            images.forEach(i => i.classList.remove("testimonials__displaying-img"));
+            img.classList.add("testimonials__displaying-img");
+
+            textEl.textContent = img.dataset.content;
+            nameEl.textContent = img.dataset.authorName;
+        });
     });
 
-    // update testimonial text & name to first visible image
-    if (firstActiveImg) {
-      textEl.textContent = firstActiveImg.dataset.content;
-      nameEl.textContent = firstActiveImg.dataset.authorName;
-      firstActiveImg.classList.add("testimonials__displaying-img");
+    // ---------- handle responsive ----------
+    function updateShowItems() {
+        const newShow = window.innerWidth < 576 ? responsiveShow : defaultShow;
+
+        if (newShow !== showItems) {
+            showItems = newShow;
+
+            // recalc current dot index to avoid overflow
+            const totalDots = Math.ceil(totalItems / showItems);
+            if (currentDotIndex >= totalDots) currentDotIndex = totalDots - 1;
+
+            createPagination();
+            showItemsByDot(currentDotIndex);
+        }
     }
 
-    // update dots
-    const dots = pagination.querySelectorAll(".testimonials__pagination-dot");
-    dots.forEach(d => d.classList.remove("testimonials__pagination-dot--active"));
-    if (dots[dotIndex]) dots[dotIndex].classList.add("testimonials__pagination-dot--active");
-  }
+    // ---------- initial load ----------
+    updateShowItems();
+    createPagination();
+    showItemsByDot(currentDotIndex);
 
-  // ---------- image click ----------
-  images.forEach(img => {
-    img.addEventListener("click", () => {
-      images.forEach(i => i.classList.remove("testimonials__displaying-img"));
-      img.classList.add("testimonials__displaying-img");
-
-      textEl.textContent = img.dataset.content;
-      nameEl.textContent = img.dataset.authorName;
-    });
-  });
-
-  // ---------- handle responsive ----------
-  function updateShowItems() {
-    const newShow = window.innerWidth < 576 ? responsiveShow : defaultShow;
-
-    if (newShow !== showItems) {
-      showItems = newShow;
-
-      // recalc current dot index to avoid overflow
-      const totalDots = Math.ceil(totalItems / showItems);
-      if (currentDotIndex >= totalDots) currentDotIndex = totalDots - 1;
-
-      createPagination();
-      showItemsByDot(currentDotIndex);
-    }
-  }
-
-  // ---------- initial load ----------
-  updateShowItems();
-  createPagination();
-  showItemsByDot(currentDotIndex);
-
-  // ---------- resize ----------
-  window.addEventListener("resize", updateShowItems);
+    // ---------- resize ----------
+    window.addEventListener("resize", updateShowItems);
 
 });

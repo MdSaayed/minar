@@ -23,6 +23,12 @@
         margin-bottom: 4.5rem;
     }
 
+    &__subtitle {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
     &__title {
         margin-top: 10px;
     }
@@ -179,7 +185,7 @@
             @media (max-width:768px) {
                 &::after {
                     width: calc(100% + 20px);
-                    height: 4px; 
+                    height: 4px;
                 }
             }
         }
@@ -203,10 +209,10 @@
             position: relative;
             z-index: 10;
 
-              @media (max-width:768px) {
+            @media (max-width:768px) {
                 width: 12px;
                 height: 12px;
-              }
+            }
 
             &--active {
                 background: $primary-color;
