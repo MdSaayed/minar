@@ -1,6 +1,6 @@
 "use strict";
 
-/*============== Hero Slider========= */
+/*============== Hero Slider ========= */
 if (document.querySelector(".card")) {
     const cards = document.querySelectorAll('.card');
     const dotsContainer = document.getElementById('dots');
@@ -68,8 +68,7 @@ if (document.querySelector(".card")) {
 
     initGallery();
 }
-
-/*============== Product Slider========= */
+/*============== Product Slider ========= */
 if (document.querySelector(".product__slider_1")) {
     var product_slider_1 = new Swiper(".product__slider_1", {
         pagination: {
@@ -79,7 +78,7 @@ if (document.querySelector(".product__slider_1")) {
     });
 }
 
-/* ======================= Faq ======================= */
+/*============== Faq ========= */
 if (document.querySelector(".faq__item")) {
     document.addEventListener('DOMContentLoaded', () => {
         const items = document.querySelectorAll('.faq__item');
@@ -115,7 +114,8 @@ if (document.querySelector(".faq__item")) {
     })
 };
 
-/*============== Product Card Image Slider========= */
+
+/*============== Product Card Image Slider ========= */
 if (document.querySelector(".product--details")) {
     let currentIndex = 0;
 
@@ -268,7 +268,7 @@ if (document.querySelector(".product--details")) {
 
 }
 
-// =====================Quantity functionality===================
+/*==============Quantity functionality ========= */
 document.addEventListener('DOMContentLoaded', () => {
     const qtyWrappers = document.querySelectorAll('.product__qty-control, .product-card__quantity');
 
@@ -296,23 +296,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// ================Vanish Submit Btn==========================
-if (document.querySelector(".vanish__input")) {
-    const input = document.querySelector(".vanish__input");
-    const submitBtn = document.querySelector(".vanish__button");
-
-    input.addEventListener("input", function () {
-        if (input.value.trim() === "") {
-            submitBtn.setAttribute("disabled", "true");
-            submitBtn.classList.add("disabled");
-        } else {
-            submitBtn.removeAttribute("disabled");
-            submitBtn.classList.remove("disabled");
-        }
-    });
-}
-
-// ========================Offcanvas==============================
+/*============== Offcanvas ========= */
 document.addEventListener('DOMContentLoaded', function () {
     const offcanvas = document.querySelector('.offcanvas');
     const offcanvasToggle = document.querySelector('#offcanvas-toggle');
@@ -391,126 +375,57 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-// ======================Testimonials===========================
+/*============== Testimonials Slider ========= */
+const swiper = new Swiper('#testimonials-slider-one', {
+    // Optional parameters
+    loop: true,
+    spaceBetween: 30,
+    centeredSlides: true,
+    autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+    },
 
-document.addEventListener("DOMContentLoaded", function () {
+    // Pagination dots
+    pagination: {
+        el: '.testimonials__pagination--inner',
+        clickable: true,
+        bulletClass: 'testimonials__pagination-dot',
+        bulletActiveClass: 'testimonials__pagination-dot--active',
+        renderBullet: function (index, className) {
+            return '<span class="' + className + '"></span>';
+        },
+    },
 
-    const imgWrap = document.querySelector(".testimonials__img-wrap");
-    if (!imgWrap) return;
-
-    const images = imgWrap.querySelectorAll(".testimonials__author-img");
-    const textEl = document.querySelector(".testimonials__text");
-    const nameEl = document.querySelector(".testimonials__author-name");
-    const pagination = document.querySelector(".testimonials__pagination");
-
-    const totalItems = parseInt(imgWrap.dataset.item);
-    const defaultShow = parseInt(imgWrap.dataset.show) || 3;
-    const responsiveShow = parseInt(imgWrap.dataset.showResponsive) || defaultShow;
-
-    let showItems = defaultShow;
-    let currentDotIndex = 0;
-
-    // ---------- create pagination ----------
-    function createPagination() {
-        pagination.innerHTML = "";
-        const totalDots = Math.ceil(totalItems / showItems);
-
-        for (let i = 0; i < totalDots; i++) {
-            const dot = document.createElement("span");
-            dot.className = "testimonials__pagination-dot";
-            if (i === currentDotIndex) dot.classList.add("testimonials__pagination-dot--active");
-            pagination.appendChild(dot);
-
-            dot.addEventListener("click", () => {
-                currentDotIndex = i;
-                showItemsByDot(i);
-            });
-        }
+    // Responsive breakpoints
+    breakpoints: {
+        640: { slidesPerView: 1 },
+        1024: { slidesPerView: 1 },
     }
-
-    // ---------- show images by dot ----------
-    function showItemsByDot(dotIndex) {
-        const start = dotIndex * showItems;
-        const end = start + showItems;
-
-        let pageIndex = 1;
-        let firstActiveImg = null;
-
-        images.forEach((img, i) => {
-            img.style.display = "none";
-            img.classList.remove("testimonials__author-img--active", "testimonials__displaying-img");
-
-            for (let j = 1; j <= showItems; j++) {
-                img.classList.remove(`testimonials__author-img--${j}`);
-            }
-
-            if (i >= start && i < end) {
-                img.style.display = "block";
-                img.dataset.index = pageIndex;
-                img.classList.add("testimonials__author-img--active", `testimonials__author-img--${pageIndex}`);
-
-                if (!firstActiveImg) firstActiveImg = img;
-                pageIndex++;
-            }
-        });
-
-        // update testimonial text & name to first visible image
-        if (firstActiveImg) {
-            textEl.textContent = firstActiveImg.dataset.content;
-            nameEl.textContent = firstActiveImg.dataset.authorName;
-            firstActiveImg.classList.add("testimonials__displaying-img");
-        }
-
-        // update dots
-        const dots = pagination.querySelectorAll(".testimonials__pagination-dot");
-        dots.forEach(d => d.classList.remove("testimonials__pagination-dot--active"));
-        if (dots[dotIndex]) dots[dotIndex].classList.add("testimonials__pagination-dot--active");
-    }
-
-    // ---------- image click ----------
-    images.forEach(img => {
-        img.addEventListener("click", () => {
-            images.forEach(i => i.classList.remove("testimonials__displaying-img"));
-            img.classList.add("testimonials__displaying-img");
-
-            textEl.textContent = img.dataset.content;
-            nameEl.textContent = img.dataset.authorName;
-        });
-    });
-
-    // ---------- handle responsive ----------
-    function updateShowItems() {
-        const newShow = window.innerWidth < 576 ? responsiveShow : defaultShow;
-
-        if (newShow !== showItems) {
-            showItems = newShow;
-
-            // recalc current dot index to avoid overflow
-            const totalDots = Math.ceil(totalItems / showItems);
-            if (currentDotIndex >= totalDots) currentDotIndex = totalDots - 1;
-
-            createPagination();
-            showItemsByDot(currentDotIndex);
-        }
-    }
-
-    // ---------- initial load ----------
-    updateShowItems();
-    createPagination();
-    showItemsByDot(currentDotIndex);
-
-    // ---------- resize ----------
-    window.addEventListener("resize", updateShowItems);
-
 });
 
+/*============== Vanish Submit Btn ========= */
+if (document.querySelector(".vanish__input")) {
+    const input = document.querySelector(".vanish__input");
+    const submitBtn = document.querySelector(".vanish__button");
 
-// =========================Vanish Animation=============================
+    input.addEventListener("input", function () {
+        if (input.value.trim() === "") {
+            submitBtn.setAttribute("disabled", "true");
+            submitBtn.classList.add("disabled");
+        } else {
+            submitBtn.removeAttribute("disabled");
+            submitBtn.classList.remove("disabled");
+        }
+    });
+}
+
+/*============== Vanish Animation ========= */
 document.addEventListener("DOMContentLoaded", function () {
 
     const imgWrap = document.querySelector(".vanish__input");
     if (!imgWrap) return;
-    
+
     const vanishInput = document.querySelector('.vanish__input');
     const vanishBtn = document.querySelector('.vanish__submit-button');
     const vanishTitle = document.querySelector('.vanish__title');

@@ -1,11 +1,20 @@
 @use '../utils/variables' as *;
 
-
-
 .faq {
     background: $light-orange-color;
-    background-image: radial-gradient(circle at 4px 4px, #fdcc61 1.5px, transparent 0);
-    background-size: 30px 30px;
+    background-image: radial-gradient(circle at 1px 20px, #d79914 1px, transparent 0);
+    background-size: 40px 40px;
+
+    @media (max-width: 992px) {
+        background-size: 30px 30px;
+        border-radius: 40px 40px 0 0;
+    }
+
+    @media (max-width: 768px) {
+        background-image: radial-gradient(circle at 1.5px 20px, #fdcc61 1.5px, transparent 0);
+        background-size: 30px 30px;
+    }
+
 
     &__title {
         text-align: center;
@@ -97,5 +106,9 @@
 
     &__item--active .faq__icon::after {
         transform: translateY(0%) rotate(-135deg);
+    }
+
+    &--two{
+        background-image: none;
     }
 }

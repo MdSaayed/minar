@@ -4,6 +4,10 @@
     padding-top: 10.875rem;
     position: relative;
 
+    &__container {
+        padding-top: 60px;
+    }
+
     &::after {
         position: absolute;
         content: "";
@@ -14,11 +18,11 @@
         background: url('../images/hero-bg-shape.png') bottom/cover no-repeat;
     }
 
-        &__container {
+    &__container {
         position: relative;
         z-index: 10;
 
-        @media(max-width: 450px){
+        @media(max-width: 450px) {
             padding-top: 40px;
         }
     }
@@ -87,7 +91,7 @@
     }
 
     &__btn-wrap {
-        margin-top: 30px;
+        margin-top: 4rem;
         display: flex;
         justify-content: center;
         align-items: center;

@@ -206,15 +206,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Testimonials Area
     if (elementExists(['testimonials--style-one'])) {
-        fadeAnimation('fade-in', ['testimonials__subtitle', 'testimonials__title', 'testimonials__subtitle-text', 'testimonials__text', 'testimonials__author-name', 'testimonials__content'], {
-            delay: 0.3,
-            duration: 0.7,
-            easing: 'ease-out'
-        });
-    }
-
-    if (elementExists(['testimonials--style-one'])) {
-        fadeAnimation('zoom-in', ['testimonials__orbit'], {
+        fadeAnimation('fade-in', ['testimonials__subtitle', 'testimonials__title', 'testimonials__subtitle-text','testimonials__area'], {
             delay: 0.3,
             duration: 0.7,
             easing: 'ease-out'
@@ -247,25 +239,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (elementExists(['mission--style-one'])) {
-        fadeAnimation('fade-in', ['mission__bottom', 'mission__title', 'mission__subtitle-text', 'mission__text--left','mission__text-limit'], {
+        fadeAnimation('fade-in', ['mission__bottom', 'mission__title', 'mission__subtitle-text', 'mission__text--left', 'mission__text-limit','mission__lists'], {
             delay: 0.3,
             duration: 0.7,
-            easing: 'ease-out'
-        });
-    }
-
-    // Experience Area
-    if (elementExists(['experience'])) {
-        fadeAnimation('fade-in', ['experience__subtitle-wrap', 'experience__title'], {
-            delay: 0.3,
-            duration: 0.7,
-            easing: 'ease-out'
-        });
-    }
-    if (elementExists(['experience'])) {
-        fadeAnimation('zoom-in', ['experience__card'], {
-            delay: 0.3,
-            duration: 0.4,
             easing: 'ease-out'
         });
     }

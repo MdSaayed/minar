@@ -9,6 +9,11 @@
     max-width: 1120px;
     margin: 0 auto;
 
+    span {
+        color: $dark-orange-color;
+        font-style: italic;
+    }
+
     @media(max-width: 1024px) {
         font-size: 4rem;
         margin-bottom: 10px;

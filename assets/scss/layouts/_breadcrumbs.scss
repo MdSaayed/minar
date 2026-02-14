@@ -2,10 +2,12 @@
 
 .breadcrumbs {
     background: url('../images/breadcrumbs-bg.png') center/cover no-repeat, $black-color;
-    min-height: 535px;
-
-    @media (max-width: 1150px) {
-        min-height: 390px;
+    padding-bottom: 100px;
+   
+    @media (max-width:576px) {
+        &__shape {
+            display: none;
+        }
     }
 
     &__subtitle-wrap {
@@ -19,16 +21,11 @@
 
         @media (max-width:576px) {
             gap: 0.8rem;
+            padding-top: 6rem;
         }
 
         @media (max-width:350px) {
             flex-wrap: wrap;
-        }
-    }
-
-    @media (max-width:576px) {
-        &__shape {
-            display: none;
         }
     }
 
@@ -51,22 +48,13 @@
         flex-shrink: 0;
     }
 
-    &__header--mission-page {
-        display: none;
-
-        @media (max-width:576px) {
-            display: block;
-        }
-    }
-
     &__title {
         color: $white-color;
         margin-top: 4rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 0;
 
         @media (max-width: 1024px) {
             margin-top: 3rem;
-            margin-bottom: 20px;
             font-size: 2.5rem;
         }
 
@@ -79,5 +67,11 @@
     &__desc {
         color: $white-color;
         text-align: center;
+        max-width: 645px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 20px;
+        font-size: $white-color;
+        margin-top: 1.5rem;
     }
 }

@@ -2,20 +2,26 @@
 
  .vanish {
      background: url('../images/vanish-vain-bg.png') bottom/cover no-repeat;
-     min-height: 100vh;
 
      &__container {
-         height: 100vh;
          display: flex;
          align-items: center;
          justify-content: center;
          min-height: 100vh;
+         height: 100%;
+         position: relative;
      }
 
      &__content {
-        padding:9rem 0 ;
-         position: relative;
          width: 100%;
+         height: fit-content;
+         transition: height 0.3s ease;
+         padding-top: 15rem;
+         padding-bottom: 6rem;
+
+         @media(max-width: 576px){
+            padding-top: 10rem;
+         }
      }
 
      &__title {
@@ -126,40 +132,39 @@
      }
 
      &__final-btns {
-         position: absolute;
-         top: 110%;
-         left: 50%;
-         transform: translateX(-50%);
          display: flex;
+         justify-content: center;
+         align-items: center;
          gap: 1.5rem;
-         width: max-content;
+         width: 100%;
          opacity: 0;
          visibility: hidden;
          transition: opacity 2s ease, visibility 2s ease, transform 2s ease;
+         margin-top: 30px;
 
          &.show {
              opacity: 1;
              visibility: visible;
-             transform: translateX(-50%) translateY(10px);
          }
 
          @media(max-width: 576px) {
              flex-direction: column;
              gap: 10px;
-             top: 105%;
          }
      }
 
-     &__btn-clam {
+     &__btn-calm {
          border: none !important;
          outline: none !important;
          box-shadow: none !important;
+         width: fit-content !important;
      }
 
      &__btn-soft {
          background: $white-color;
          border: none !important;
          outline: none !important;
+         width: fit-content;
      }
 
      .fade-in {
