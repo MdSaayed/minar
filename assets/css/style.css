@@ -3646,6 +3646,12 @@ p {
   line-height: 1.1;
   text-align: center;
 }
+.vanish__title--4 {
+  font-size: clamp(2.5rem, 5vw + 1rem, 4.375rem);
+}
+.vanish__title--5 {
+  font-size: clamp(1.5rem, 0.95rem + 2.7vw, 3rem);
+}
 .vanish__subtitle {
   font-size: 1.5rem;
   color: #000000;

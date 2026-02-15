@@ -36,6 +36,14 @@
          letter-spacing: 0;
          line-height: 1.1;
          text-align: center;
+
+         &--4 {
+             font-size: clamp(2.5rem, 5vw + 1rem, 4.375rem);
+         }
+
+         &--5 {
+             font-size: clamp(1.5rem, 0.95rem + 2.7vw, 3rem);
+         }
      }
 
      &__subtitle {

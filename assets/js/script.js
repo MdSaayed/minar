@@ -421,6 +421,102 @@ if (document.querySelector(".vanish__input")) {
 }
 
 /*============== Vanish Animation ========= */
+// document.addEventListener("DOMContentLoaded", function () {
+
+//     const imgWrap = document.querySelector(".vanish__input");
+//     if (!imgWrap) return;
+
+//     const vanishInput = document.querySelector('.vanish__input');
+//     const vanishBtn = document.querySelector('.vanish__submit-button');
+//     const vanishTitle = document.querySelector('.vanish__title');
+//     const vanishSubtitle = document.querySelector('.vanish__subtitle');
+//     const vanishCard = document.querySelector('.vanish__card');
+//     const vanishDisclaimer = document.querySelector('.vanish__disclaimer');
+//     const vanishContent = document.querySelector('.vanish__content-inner');
+
+//     const btnGroup = document.createElement('div');
+//     btnGroup.className = "vanish__final-btns";
+//     btnGroup.innerHTML = `
+//     <a href="#" class="vanish__btn-calm btn btn--primary" onclick="location.reload()"  >
+//         Return to calm
+//     </a>
+//     <button class="vanish__btn-soft btn btn--secondary">
+//         Find something soft to do
+//     </button>
+// `;
+//     vanishContent.appendChild(btnGroup);
+
+//     vanishInput.addEventListener('input', () => {
+//         const hasValue = vanishInput.value.trim().length > 0;
+//         vanishBtn.classList.toggle('disabled', !hasValue);
+//         vanishBtn.disabled = !hasValue;
+//     });
+
+//     vanishInput.addEventListener('keydown', (e) => {
+//         if (e.key === 'Enter' && !e.shiftKey && !vanishBtn.disabled) {
+//             e.preventDefault();
+//             startVanishSequence();
+//         }
+//     });
+
+//     vanishBtn.addEventListener('click', startVanishSequence);
+
+//     async function startVanishSequence() {
+//         vanishTitle.classList.add('fade-out');
+//         vanishSubtitle.classList.add('fade-out');
+//         vanishCard.classList.add('fade-out');
+//         vanishDisclaimer.classList.add('fade-out');
+
+//         await delay(1800);
+
+//         vanishCard.style.display = "none";
+//         vanishDisclaimer.style.display = "none";
+//         vanishSubtitle.style.display = "none";
+
+//         await updateTextSequence("It’s gone from here.", 2500);
+//         await updateTextSequence("Take a slow, deep breath.", 3000);
+//         await updateTextSequence("“This feeling is valid, but temporary.”", 3500);
+
+//         showFinalScreen();
+//     }
+
+//     async function updateTextSequence(newText, duration) {
+//         if (vanishTitle.innerText !== "") {
+//             vanishTitle.classList.remove('fade-in');
+//             vanishTitle.classList.add('fade-out');
+//             await delay(1600);
+//         }
+
+//         vanishTitle.innerText = newText;
+//         vanishTitle.classList.remove('fade-out');
+//         void vanishTitle.offsetWidth;
+//         vanishTitle.classList.add('fade-in');
+
+//         await delay(duration);
+//     }
+
+//     async function showFinalScreen() {
+//         vanishTitle.classList.remove('fade-in');
+//         vanishTitle.classList.add('fade-out');
+//         await delay(1600);
+
+//         vanishTitle.innerText = "“You’ve cleared a little space. Now fill it with colour.”";
+//         vanishTitle.classList.remove('fade-out');
+//         void vanishTitle.offsetWidth;
+//         vanishTitle.classList.add('fade-in');
+
+//         setTimeout(() => {
+//             btnGroup.classList.add('show');
+//         }, 1200);
+//     }
+
+//     function delay(ms) {
+//         return new Promise(resolve => setTimeout(resolve, ms));
+//     }
+// });
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
 
     const imgWrap = document.querySelector(".vanish__input");
@@ -433,6 +529,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const vanishCard = document.querySelector('.vanish__card');
     const vanishDisclaimer = document.querySelector('.vanish__disclaimer');
     const vanishContent = document.querySelector('.vanish__content-inner');
+
+    let textStep = 1;
 
     const btnGroup = document.createElement('div');
     btnGroup.className = "vanish__final-btns";
@@ -473,7 +571,7 @@ document.addEventListener("DOMContentLoaded", function () {
         vanishDisclaimer.style.display = "none";
         vanishSubtitle.style.display = "none";
 
-        await updateTextSequence("It’s gone from here.", 2500);
+        await updateTextSequence("It’s gone from here.", 2500); 
         await updateTextSequence("Take a slow, deep breath.", 3000);
         await updateTextSequence("“This feeling is valid, but temporary.”", 3500);
 
@@ -487,6 +585,12 @@ document.addEventListener("DOMContentLoaded", function () {
             await delay(1600);
         }
 
+        textStep++;
+        
+        const prevStepClass = `vanish__title--${textStep - 1}`;
+        vanishTitle.classList.remove(prevStepClass);
+        vanishTitle.classList.add(`vanish__title--${textStep}`);
+
         vanishTitle.innerText = newText;
         vanishTitle.classList.remove('fade-out');
         void vanishTitle.offsetWidth;
@@ -499,6 +603,11 @@ document.addEventListener("DOMContentLoaded", function () {
         vanishTitle.classList.remove('fade-in');
         vanishTitle.classList.add('fade-out');
         await delay(1600);
+
+        textStep++;
+        const prevStepClass = `vanish__title--${textStep - 1}`;
+        vanishTitle.classList.remove(prevStepClass);
+        vanishTitle.classList.add(`vanish__title--${textStep}`);
 
         vanishTitle.innerText = "“You’ve cleared a little space. Now fill it with colour.”";
         vanishTitle.classList.remove('fade-out');
