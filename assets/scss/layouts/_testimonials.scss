@@ -17,10 +17,13 @@
         transform: rotate(-151deg);
         -webkit-filter: blur(200px);
         filter: blur(200px);
+        z-index: 10;
     }
 
     &__header {
         margin-bottom: 4.5rem;
+        position: relative;
+        z-index: 15;
     }
 
     &__subtitle {
@@ -46,6 +49,7 @@
 
     &__content {
         position: relative;
+        z-index: 5;
     }
 
     &__text {
@@ -152,6 +156,7 @@
             border-radius: 50%;
             cursor: pointer;
             position: relative;
+            transition: all 0.4s ease;
             z-index: 10;
 
             @media (max-width:768px) {
@@ -159,7 +164,7 @@
                 height: 12px;
             }
 
-            &--active::after {
+            &::after {
                 content: "";
                 position: absolute;
                 width: 12px;
@@ -167,14 +172,21 @@
                 border-radius: 50%;
                 top: 50%;
                 left: 50%;
+                transform: translate(-50%, -50%) scale(0);
                 transform: translate(-50%, -50%);
                 background: $primary-color;
-
+                opacity: 0;
+                transition: 0.4s ease;
 
                 @media (max-width:768px) {
                     width: 8px;
                     height: 8px;
                 }
+            }
+
+            &--active::after {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
             }
         }
     }

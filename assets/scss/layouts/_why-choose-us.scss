@@ -22,7 +22,7 @@
         height: 490px;
         top: -130px;
         left: -4px;
-        background: $primary-color;
+        background: $vivid-orange;
         transform: rotate(-112.6deg);
         border-radius: 50%;
         filter: blur(200px);
@@ -343,7 +343,7 @@
 
             @media(max-width: 768px) {
                 top: 0%;
-                left: 34%;
+                left: 31%;
             }
 
             @media (max-width:500px) {
@@ -351,9 +351,14 @@
                 left: 36%;
             }
 
-            @media (max-width:400px) {
-                top: -12%;
-                left: 40%;
+            @media (max-width:450px) {
+                top: -10%;
+                left: 30%;
+                width: 100%;
+                max-width: 200px;
+            }
+            @media (max-width:385px) {
+                top: -14%;
             }
         }
 
@@ -371,9 +376,18 @@
                 right: -1%;
             }
 
-            @media(max-width: 768px) {
-                top: 36%;
-                right: 3%;
+            @media(max-width:768px) {
+                top: unset;
+                bottom: 8% !important;
+                left: 5%;
+                max-width: fit-content;
+            }
+
+            @media (max-width:450px) {
+                top: unset;
+                bottom: 2% !important;
+                left: 5%;
+                max-width: fit-content;
             }
         }
 
@@ -395,9 +409,7 @@
             }
 
             @media(max-width: 768px) {
-                top: unset;
-                bottom: 10% !important;
-                left: 5%;
+                display: none;
             }
 
             @media(max-width: 500px) {
@@ -410,7 +422,7 @@
         &__text-box--4 {
             bottom: 30%;
             right: -2%;
-            min-width: 165px;
+            min-width: 185px;
             -webkit-transform: translate(-50%, 50%);
             transform: translate(-50%, 50%);
 
@@ -423,9 +435,20 @@
                 left: 88%;
             }
 
-            @media(max-width:768px) {
-                display: none;
+            @media(max-width: 768px) {
+                top: 30%;
+                left: 85%;
+            }
 
+            @media(max-width: 550px) {
+                top: 30%;
+                left: 76%;
+            }
+
+            @media(max-width: 450px) {
+                top: 26%;
+                left: 70%;
+                max-width: 160px;
             }
         }
 
@@ -465,7 +488,6 @@
 
             @media(max-width:768px) {
                 display: none;
-
             }
         }
 
@@ -506,7 +528,6 @@
 
             @media(max-width:768px) {
                 display: none;
-
             }
         }
     }

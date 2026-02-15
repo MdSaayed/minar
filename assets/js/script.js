@@ -68,6 +68,7 @@ if (document.querySelector(".card")) {
 
     initGallery();
 }
+
 /*============== Product Slider ========= */
 if (document.querySelector(".product__slider_1")) {
     var product_slider_1 = new Swiper(".product__slider_1", {
@@ -113,7 +114,6 @@ if (document.querySelector(".faq__item")) {
         });
     })
 };
-
 
 /*============== Product Card Image Slider ========= */
 if (document.querySelector(".product--details")) {
@@ -376,7 +376,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /*============== Testimonials Slider ========= */
-const swiper = new Swiper('#testimonials-slider-one', {
+const testimonials_slider = new Swiper('#testimonials-slider-one', {
     // Optional parameters
     loop: true,
     spaceBetween: 30,
@@ -432,7 +432,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const vanishSubtitle = document.querySelector('.vanish__subtitle');
     const vanishCard = document.querySelector('.vanish__card');
     const vanishDisclaimer = document.querySelector('.vanish__disclaimer');
-    const vanishContent = document.querySelector('.vanish__content');
+    const vanishContent = document.querySelector('.vanish__content-inner');
 
     const btnGroup = document.createElement('div');
     btnGroup.className = "vanish__final-btns";
@@ -475,7 +475,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         await updateTextSequence("It’s gone from here.", 2500);
         await updateTextSequence("Take a slow, deep breath.", 3000);
-        await updateTextSequence("Inhale for 4 seconds. Hold for 4 seconds. Exhale for 6 seconds.", 5000);
+        await updateTextSequence("“This feeling is valid, but temporary.”", 3500);
 
         showFinalScreen();
     }
@@ -500,7 +500,7 @@ document.addEventListener("DOMContentLoaded", function () {
         vanishTitle.classList.add('fade-out');
         await delay(1600);
 
-        vanishTitle.innerText = "“This feeling is valid, but temporary.”";
+        vanishTitle.innerText = "“You’ve cleared a little space. Now fill it with colour.”";
         vanishTitle.classList.remove('fade-out');
         void vanishTitle.offsetWidth;
         vanishTitle.classList.add('fade-in');
