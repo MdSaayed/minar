@@ -485,16 +485,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
         await delay(0);
 
+        vanishSubtitle.style.display = "none";
         vanishCard.style.display = "none";
         vanishDisclaimer.style.display = "none";
-        vanishSubtitle.style.display = "none";
 
         await updateTextSequence("It’s gone from here.", 2500);
         await updateTextSequence("Take a slow, deep breath.", 3000);
         await updateTextSequence("“This feeling is valid, but temporary.”", 3500);
 
         showFinalScreen();
-
     }
 
     async function updateTextSequence(newText, duration) {
