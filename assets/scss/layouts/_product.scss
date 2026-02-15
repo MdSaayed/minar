@@ -310,7 +310,6 @@
 
         &__image-box {
             position: relative;
-            max-height: 280px;
             background: #fdfdfd;
             overflow: hidden;
             border-radius: 10px;
@@ -318,6 +317,7 @@
 
         &__img-wrap {
             overflow: hidden;
+            max-height: 280px;
 
             img {
                 width: 100%;
@@ -438,6 +438,18 @@
                     transform: translateX(4px);
                 }
             }
+        }
+
+        &__slider-nav span {
+            transition: .2s transform, .2s left;
+            background: #A2A2A2;
+            height: 8px !important;
+            width: 8px !important;
+        }
+
+        &__slider-nav span.swiper-pagination-bullet-active {
+            transition: .2s transform, .2s left;
+            background: $white-color ;
         }
     }
 }
