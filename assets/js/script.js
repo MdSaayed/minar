@@ -79,6 +79,7 @@ if (document.querySelector(".product__slider_1")) {
         },
     });
 }
+
 /*============== Product Slider Product Page========= */
 if (document.querySelector("#product-slider-2")) {
     var product_sliders = new Swiper(".product__swiper", {
@@ -393,6 +394,7 @@ const testimonials_slider = new Swiper('#testimonials-slider-one', {
     loop: true,
     spaceBetween: 30,
     centeredSlides: true,
+    speed: 800,
     autoplay: {
         delay: 3000,
         disableOnInteraction: false,
@@ -481,7 +483,7 @@ document.addEventListener("DOMContentLoaded", function () {
         vanishCard.classList.add('fade-out');
         vanishDisclaimer.classList.add('fade-out');
 
-        await delay(1800);
+        await delay(0);
 
         vanishCard.style.display = "none";
         vanishDisclaimer.style.display = "none";
@@ -492,6 +494,7 @@ document.addEventListener("DOMContentLoaded", function () {
         await updateTextSequence("“This feeling is valid, but temporary.”", 3500);
 
         showFinalScreen();
+
     }
 
     async function updateTextSequence(newText, duration) {
@@ -518,7 +521,7 @@ document.addEventListener("DOMContentLoaded", function () {
     async function showFinalScreen() {
         vanishTitle.classList.remove('fade-in');
         vanishTitle.classList.add('fade-out');
-        await delay(1600);
+        await delay(800);
 
         textStep++;
         const prevStepClass = `vanish__title--${textStep - 1}`;
@@ -532,7 +535,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         setTimeout(() => {
             btnGroup.classList.add('show');
-        }, 1200);
+        }, 800);
     }
 
     function delay(ms) {

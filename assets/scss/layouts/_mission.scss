@@ -122,6 +122,7 @@
 
     &__vission-image-wrap {
         position: relative;
+        z-index: 5; 
 
 
         @media (max-width:1300px) {

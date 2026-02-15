@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vanish — Let Go</title>
+
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #0f0f17;
+      color: #e0e0ff;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 540px;
+      width: 90%;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    .vanish__title {
+      font-size: 2.1rem;
+      font-weight: 500;
+      line-height: 1.35;
+      margin: 0 0 1.5rem;
+      min-height: 3.8em;          /* ← বাড়ানো হয়েছে → layout jump কমবে */
+    }
+
+    .vanish__subtitle,
+    .vanish__disclaimer {
+      color: #a0a0cc;
+      font-size: 1.05rem;
+      margin: 0 0 1.8rem;
+      transition: opacity 1.2s ease;
+    }
+
+    .vanish__card {
+      background: rgba(30,30,50,0.4);
+      border-radius: 16px;
+      padding: 1.4rem;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(100,100,255,0.12);
+      margin-bottom: 1.5rem;
+      transition: opacity 1.2s ease;
+    }
+
+    /* ... বাকি input, button, final-btns এর স্টাইল একই রাখা যায় ... */
+
+    /* Animations — ধীরে ধীরে আসার জন্য সময় বাড়ানো */
+    .fade-in {
+      animation: smoothFadeIn 3.2s forwards cubic-bezier(0.25, 0.1, 0.25, 1);   /* ← 3.2s */
+    }
+
+    .fade-out {
+      animation: smoothFadeOut 1.2s forwards cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @keyframes smoothFadeIn {
+      0%   { opacity: 0;   filter: blur(10px);  transform: translateY(20px); }
+      100% { opacity: 1;   filter: blur(0);     transform: translateY(0);    }
+    }
+
+    @keyframes smoothFadeOut {
+      0%   { opacity: 1;   filter: blur(0);     transform: translateY(0);    }
+      100% { opacity: 0;   filter: blur(10px);  transform: translateY(-12px); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1 class="vanish__title">Let something go for today.</h1>
+  <p class="vanish__subtitle">Type what you'd like to release today…</p>
+
+  <div class="vanish__card">
+    <textarea class="vanish__input" placeholder="Write here..." rows="4"></textarea>
+    <button class="vanish__submit-button disabled" disabled>Release</button>
+  </div>
+
+  <p class="vanish__disclaimer">This will only disappear from this screen — nothing is saved.</p>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const vanishInput      = document.querySelector('.vanish__input');
+  const vanishBtn        = document.querySelector('.vanish__submit-button');
+  const vanishTitle      = document.querySelector('.vanish__title');
+  const vanishSubtitle   = document.querySelector('.vanish__subtitle');
+  const vanishCard       = document.querySelector('.vanish__card');
+  const vanishDisclaimer = document.querySelector('.vanish__disclaimer');
+  const container        = document.querySelector('.container');
+
+  let textStep = 1;
+
+  const btnGroup = document.createElement('div');
+  btnGroup.className = 'vanish__final-btns';
+  btnGroup.innerHTML = `
+    <a href="#" class="btn btn--primary" onclick="location.reload()">Return to calm</a>
+    <button class="btn btn--secondary">Find something soft to do</button>
+  `;
+  container.appendChild(btnGroup);
+
+  vanishInput.addEventListener('input', () => {
+    const hasText = vanishInput.value.trim().length > 0;
+    vanishBtn.disabled = !hasText;
+    vanishBtn.classList.toggle('disabled', !hasText);
+  });
+
+  vanishInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !e.shiftKey && !vanishBtn.disabled) {
+      e.preventDefault();
+      startVanishSequence();
+    }
+  });
+
+  vanishBtn.addEventListener('click', startVanishSequence);
+
+  async function startVanishSequence() {
+    // সবকিছু fade out — কিন্তু display none এখনই না
+    vanishTitle.classList.add('fade-out');
+    vanishSubtitle.classList.add('fade-out');
+    vanishCard.classList.add('fade-out');
+    vanishDisclaimer.classList.add('fade-out');
+
+    await delay(1250);   // ← fade-out animation শেষ হওয়ার জন্য অপেক্ষা (1.2s + buffer)
+
+    // এখন hide করা
+    vanishCard.style.display       = 'none';
+    vanishSubtitle.style.display   = 'none';
+    vanishDisclaimer.style.display = 'none';
+
+    // প্রথম মেসেজ
+    await updateTextSequence("It’s gone from here.", 1800);          // ← বেশি সময় দেখাবে
+    await updateTextSequence("Take a slow, deep breath.", 1700);
+    await updateTextSequence("“This feeling is valid, but temporary.”", 1800);
+
+    showFinalScreen();
+  }
+
+  async function updateTextSequence(text, waitMs) {
+    if (vanishTitle.textContent.trim()) {
+      vanishTitle.classList.add('fade-out');
+      await delay(1250);           // ← fade-out এর জন্য যথেষ্ট সময়
+    }
+
+    textStep++;
+    vanishTitle.classList.remove('fade-in', 'fade-out');
+    void vanishTitle.offsetWidth;
+
+    vanishTitle.textContent = text;
+    vanishTitle.classList.add('fade-in');
+
+    await delay(waitMs);
+  }
+
+  async function showFinalScreen() {
+    vanishTitle.classList.add('fade-out');
+    await delay(1250);
+
+    textStep++;
+    vanishTitle.classList.remove('fade-in', 'fade-out');
+    void vanishTitle.offsetWidth;
+
+    vanishTitle.textContent = "You’ve cleared a little space.\nNow fill it with colour.";
+
+    vanishTitle.classList.add('fade-in');
+
+    setTimeout(() => {
+      btnGroup.classList.add('show');
+    }, 1400);
+  }
+
+  function delay(ms) {
+    return new Promise(r => setTimeout(r, ms));
+  }
+});
+</script>
+</body>
+</html>
